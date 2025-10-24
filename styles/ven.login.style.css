@@ -1,0 +1,135 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f3f5fc;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #007bff;
+}
+.logo span {
+  color: #ff8c00;
+}
+
+nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+nav a:hover {
+  color: #007bff;
+}
+
+.auth a {
+  margin-right: 12px;
+  color: #333;
+  text-decoration: none;
+}
+.auth button {
+  background: #ff8c00;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.auth button:hover {
+  background: #e67a00;
+}
+
+/* Login box */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+.box {
+  background: white;
+  padding: 40px;
+  width: 360px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.tab {
+  display: flex;
+  margin: 20px 0;
+}
+.tab button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: #e9e9e9;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.tab .active {
+  background: white;
+  border: 2px solid #dcdcdc;
+}
+
+form {
+  text-align: left;
+}
+label {
+  font-size: 14px;
+  display: block;
+  margin-top: 10px;
+}
+input {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px;
+  border: none;
+  background: #3498ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.login-btn:hover {
+  background: #007bff;
+}
+
+.forgot {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link {
+  text-align: center;
+  margin-top: 18px;
+}
+.link a {
+  color: #007bff;
+  text-decoration: none;
+}

@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f7f8fc;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #007bff;
+}
+.logo span {
+  color: #ff8c00;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav a:hover {
+  color: #007bff;
+}
+
+.auth a {
+  margin-right: 15px;
+  color: #333;
+  text-decoration: none;
+}
+.auth button {
+  background: #ff8c00;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.auth button:hover {
+  background: #e67e00;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 85vh; */
+  margin: 20px;
+}
+
+.signup-box {
+  background: white;
+  padding: 40px;
+  width: 380px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.tab button {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  cursor: pointer;
+  background: #f2f2f2;
+  font-weight: 600;
+  border-radius: 5px;
+}
+.tab button.active {
+  background: #007bff;
+  border: 2px solid #ddd;
+  color: white;
+}
+
+.tab  a {
+    text-decoration: none;
+    color: black;
+}
+
+form {
+  text-align: left;
+}
+label {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  
+}
+
+.row {
+  display: flex;
+  gap: 40px;
+}
+.row div {
+  flex: 1;
+}
+
+
+
+.create-btn {
+  width: 100%;
+  background: linear-gradient(to right, #ff8c00, #ffae00);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.create-btn:hover {
+  background: linear-gradient(to right, #e67e00, #ffa200);
+}
+
+.join {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+.join a {
+  color: #007bff;
+  text-decoration: none;
+}
+.join a:hover {
+  text-decoration: underline;
+}

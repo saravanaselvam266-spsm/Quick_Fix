@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f7f8fc;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #007bff;
+}
+.logo span {
+  color: #ff8c00;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav a:hover {
+  color: #007bff;
+}
+
+.login{
+  margin-right: 15px;
+  color: #333;
+  text-decoration: none;
+}
+.signup {
+  background: #ff8c00;
+  color: white;
+  font-size: 13px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.signup:hover {
+  background: #e67e00;
+}
+
+.intro-bar {
+  background-color: #1e88e5;
+  height: 450px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.intro-text > ul {
+  list-style: none;
+  padding-left: 40px;
+  color: #ffff;
+}
+
+.intro-text > ul > li:nth-child(1) {
+  font-size: 70px;
+}
+
+.intro-text > ul > li:nth-child(2) {
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.intro-text > ul > li:nth-child(3) {
+  background-color: #ff9d3c;
+  width: 80px;
+  padding: 10px;
+}
