@@ -1,95 +1,184 @@
 body {
-  background: #f5f6fa;
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f7f8fc;
+}
+
+header {
   display: flex;
-  justify-content: center;
-  padding: 50px 0;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 60px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-  width: 420px;
-  background: white;
-  border-radius: 10px;
-  padding: 25px 30px;
-  box-shadow: 0px 6px 18px rgba(0,0,0,0.1);
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #007bff;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 5px;
+.logo span {
+  color: #ff8c00;
 }
 
-p {
-  text-align: center;
-  color: #666;
-  margin-bottom: 15px;
+nav a {
+  margin: 0 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-form label {
-  font-size: 14px;
-  display: block;
-  margin-top: 12px;
+nav a:hover {
+  color: #007bff;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-
-.tab-box {
-  display: flex;
-  background: #e5e7eb;
-  border-radius: 30px;
-  overflow: hidden;
-  margin: 15px 0 25px;
-}
-
-.tab-box a {
-  flex: 1;
-  text-align: center;
-  padding: 8px 0;
+.auth a {
+  margin-left: 15px;
   text-decoration: none;
   color: #333;
-  font-size: 14px;
 }
 
-.tab-box .active {
-  background: white;
-  font-weight: bold;
-}
-
-.checkboxes label {
-  display: block;
-  margin-top: 5px;
-  font-size: 13px;
-}
-
-.two-columns {
-  display: flex;
-  gap: 10px;
-}
-
-button.main-btn {
-  width: 100%;
-  background: #f79400;
+.auth button {
+  background: #ff8c00;
   color: white;
-  padding: 12px;
   border: none;
-  margin-top: 20px;
+  padding: 8px 16px;
   border-radius: 6px;
-  font-size: 15px;
   cursor: pointer;
 }
 
-.switch-text {
-  text-align: center;
-  margin-top: 12px;
+.auth button:hover {
+  background-color: #e67e00;
 }
 
-.switch-text a {
-  color: #0066cc;
+/* MAIN CONTENT */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  
+}
+
+.form-container {
+  background: #fff;
+  width: 380px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-container p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Tabs */
+.tab {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px 0;
+}
+
+.tab button{
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #f4f4f4;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab button.active {
+  background: #007bff;
+  color: white;
+  /* border: 2px solid #ddd; */
+}
+
+.tab a {
+  color: black;
   text-decoration: none;
+}
+
+/* Form */
+form {
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 40px;
+}
+
+.row div {
+  flex: 1;
+}
+
+/* Button */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(to right, #ff9500, #ffa500);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(to right, #e67e00, #ffa200);
+}
+
+.switch {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.switch a:hover {
+  text-decoration: underline;
 }
