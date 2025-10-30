@@ -4,78 +4,149 @@ body {
   background: #f7f8fc;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 60px;
+  padding: 15px 50px;
   background: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .logo {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: bold;
   color: #007bff;
 }
+
 .logo span {
-  color: #ff8c00;
+  color: #ff9500;
 }
 
 nav a {
   margin: 0 15px;
-  color: #333;
   text-decoration: none;
+  color: #333;
   font-weight: 500;
 }
+
 nav a:hover {
   color: #007bff;
 }
 
-.login{
+.auth a {
   margin-right: 15px;
-  color: #333;
   text-decoration: none;
 }
-.signup {
+
+.auth button {
   background: #ff8c00;
   color: white;
-  font-size: 13px;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
-  text-decoration: none;
 }
-.signup:hover {
+.auth button:hover {
   background: #e67e00;
 }
 
-.intro-bar {
-  background-color: #1e88e5;
-  height: 450px;
+.signup {
+  background: #ff9500;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 60px 50px;
+  background: linear-gradient(to right, #2786e6, #4fb2ff);
+  color: white;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-img img {
+  width: 420px;
+  border-radius: 10px;
+}
+
+.book-now {
+  background: #ff9500;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Steps Section */
+.steps-section {
+  text-align: center;
+  padding: 50px;
+  background: white;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.step {
+  width: 220px;
+}
+
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+/* Services */
+.services-section {
+  text-align: center;
+  padding: 60px;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  width: 220px;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-btn {
+  background: #ff9500;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  background: white;
+  padding: 20px 50px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.intro-text > ul {
-  list-style: none;
-  padding-left: 40px;
-  color: #ffff;
-}
-
-.intro-text > ul > li:nth-child(1) {
-  font-size: 70px;
-}
-
-.intro-text > ul > li:nth-child(2) {
-  font-size: 20px;
-  padding-top: 10px;
-}
-
-.intro-text > ul > li:nth-child(3) {
-  background-color: #ff9d3c;
-  width: 80px;
-  padding: 10px;
 }

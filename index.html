@@ -3,33 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Quick Fix</title>
+    <title>QuickFix - Mechanic at Your Doorstep</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Navigation -->
     <header>
-      <div class="logo">Quick<span>Fix</span></div>
+      <div class="logo">
+        <a>Quick<span>Fix</span></a>
+      </div>
       <nav>
         <a href="#">Home</a>
         <a href="#">Services</a>
         <a href="#">How It Works</a>
       </nav>
       <div class="auth">
-        <a class="login" href="./pages/login.html">Login</a>
-        <a class="signup" href="./pages/signup.html">Sign Up</a>
+        <a href="./pages/login.html">Login</a>
+        <button class="signup">Sign Up</button>
       </div>
     </header>
-    <main>
-      <div class="intro-bar">
-        <div class="intro-text">
-          <ul>
-            <li>Mechanic at your <br />location!!<br /></li>
-            <li>Book a mechanic anywhere, anytime.</li>
-            <li class="book">Book Now</li>
-          </ul>
-        </div>
-        <div class="image"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Mechanic at your<br />Location!!!</h1>
+        <p>Book a mechanic anywhere, anytime.</p>
+        <button class="book-now">Book Now</button>
       </div>
-    </main>
+      <div class="hero-img">
+        <img
+          src="https://images.unsplash.com/photo-1612197598712-01ab7c087df4"
+          alt="Tools"
+        />
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps-section">
+      <h2>How It Works</h2>
+      <p>Simple steps to get your vehicle fixed</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="icon">📅</div>
+          <h3>Book a Mechanic</h3>
+          <p>Choose your service and schedule appointment.</p>
+        </div>
+        <div class="step">
+          <div class="icon">📍</div>
+          <h3>We Come to You</h3>
+          <p>Mechanic arrives at your location.</p>
+        </div>
+        <div class="step">
+          <div class="icon">⭐</div>
+          <h3>Pay & Rate</h3>
+          <p>Pay securely and rate your experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section">
+      <h2>Our Services</h2>
+      <p>Professional automotive services at competitive prices</p>
+
+      <div class="service-cards">
+        <div class="card">
+          <div class="icon">🚲</div>
+          <h3>Bike Service</h3>
+          <p>$25</p>
+          <button class="card-btn">Book Now</button>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚗</div>
+          <h3>Car Service</h3>
+          <p>$75</p>
+          <button class="card-btn">Book Now</button>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Emergency Help</h3>
+          <p>$50</p>
+          <button class="card-btn">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-left">
+        <div class="logo">Quick<span>Fix</span></div>
+        <p>Professional mechanic services at your doorstep.</p>
+      </div>
+      <div class="footer-right">
+        <p>© 2025 QuickFix. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
