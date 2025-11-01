@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickFix - Enter Location</title>
+    <link rel="stylesheet" href="../styles/location.style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <div class="logo">
+        <a>Quick<span>Fix</span></a>
+      </div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#Our Services">Services</a>
+        <a href="#How It Works">How It Works</a>
+      </nav>
+      <div class="auth">
+        <a href="./pages/login.html">Login</a>
+        <button class="signup">Sign Up</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="steps">
+        <div class="step active">1</div>
+        <div class="line"></div>
+        <div class="step">2</div>
+        <div class="line"></div>
+        <div class="step">3</div>
+        <div class="line"></div>
+        <div class="step">4</div>
+      </div>
+      <div class="labels">
+        <span>Location</span>
+        <span>Service</span>
+        <span>Mechanic</span>
+        <span>Confirm</span>
+      </div>
+
+      <div class="form-box">
+        <h2>Enter Your Location</h2>
+        <p>Where do you need the mechanic to come?</p>
+
+        <label for="address">Address</label>
+        <input
+          type="text"
+          id="address"
+          placeholder="Enter your address or use GPS"
+        />
+
+        <div class="map-box">
+          <div class="map-placeholder">
+            <span>📍</span>
+            <p>Interactive Map Would Appear Here</p>
+          </div>
+        </div>
+
+        <button class="continue-btn">Continue</button>
+      </div>
+    </main>
+  </body>
+</html>

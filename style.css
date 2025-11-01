@@ -37,6 +37,13 @@ nav a:hover {
 .auth a {
   margin-right: 15px;
   text-decoration: none;
+  color: #333;
+}
+
+.auth a:hover{
+  cursor: pointer;
+  color: #2786e6;
+
 }
 
 .auth button {
@@ -67,6 +74,7 @@ nav a:hover {
   padding: 60px 50px;
   background: linear-gradient(to right, #2786e6, #4fb2ff);
   color: white;
+  height: 300px;
 }
 
 .hero-text {
@@ -74,7 +82,7 @@ nav a:hover {
 }
 
 .hero-img img {
-  width: 420px;
+  width: 500px;
   border-radius: 10px;
 }
 
@@ -93,13 +101,14 @@ nav a:hover {
   text-align: center;
   padding: 50px;
   background: white;
+  height: 500px;
 }
 
 .steps {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: 30px;
+  gap: 200px;
+  margin-top: 100px;
 }
 
 .step {
@@ -115,31 +124,42 @@ nav a:hover {
 .services-section {
   text-align: center;
   padding: 60px;
+  height: 500px;
 }
 
 .service-cards {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 90px;
   margin-top: 30px;
 }
 
 .card {
   background: white;
-  width: 220px;
+  height: 300px;
+  width: 320px;
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.card div {
+  margin-top: 70px;
+}
+
 .card-btn {
   background: #ff9500;
+  width: 300px;
   border: none;
   padding: 8px 15px;
   border-radius: 6px;
   color: white;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 10px;
+}
+
+.card-btn:hover {
+  background: #e67e00;
 }
 
 /* Footer */
