@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f7f8fc;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: white;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.logo span {
+  color: #ff9500;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+.auth a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.auth a:hover {
+  cursor: pointer;
+  color: #2786e6;
+}
+
+.auth button {
+  background: #ff8c00;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.auth button:hover {
+  background: #e67e00;
+}
+
+.signup {
+  background: #ff9500;
+  border: none;
+  padding: 8px 170px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Steps */
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 20px;
+}
+
+.step {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  line-height: 35px;
+  font-weight: bold;
+}
+
+.step.active {
+  background: #007bff;
+}
+
+.step.completed {
+  background: #28a745;
+}
+
+.line {
+  width: 70px;
+  height: 2px;
+  background: #ccc;
+}
+
+.line.active {
+  background: #007bff;
+}
+
+.labels {
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+  margin-bottom: 30px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Form Box */
+.form-box {
+  background: white;
+  width: 800px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.form-box h2 {
+  margin-bottom: 5px;
+}
+
+.form-box p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+}
+
+/* Buttons */
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-row button {
+  width: 48%;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: #ffffff;
+  border: 1px solid #000000;
+}
+
+.buttons-row button a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.back-btn:hover {
+  background-color: lightgrey;
+}
+
+.next-btn {
+  background: #61aefb;
+  color: white;
+  border: none;
+}
