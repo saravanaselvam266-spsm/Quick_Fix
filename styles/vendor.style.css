@@ -184,6 +184,12 @@ nav a:hover {
   cursor: pointer;
   font-weight: 600;
 }
+
+.book-btn a {
+  text-decoration: none;
+  color: white;
+}
+
 .book-btn:hover {
   background: #ff8c00;
 }

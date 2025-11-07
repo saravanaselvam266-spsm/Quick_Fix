@@ -145,6 +145,11 @@ input {
   margin-bottom: 20px;
 }
 
+input:valid~button{
+  background: #0080ff;
+}
+
+
 /* Map Box */
 .map-box {
   background: #e9edf3;
