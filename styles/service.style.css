@@ -175,6 +175,9 @@ select {
   background-color: lightgrey;
 }
 
+select:valid~.buttons-row > .next-btn{
+  background: #0080ff;
+}
 .next-btn {
   background: #61aefb;
   color: white;

@@ -40,10 +40,9 @@ nav a:hover {
   color: #333;
 }
 
-.auth a:hover{
+.auth a:hover {
   cursor: pointer;
   color: #2786e6;
-
 }
 
 .auth button {
@@ -94,6 +93,11 @@ nav a:hover {
   color: white;
   cursor: pointer;
   margin-top: 15px;
+}
+
+.book-now a {
+  text-decoration: none;
+  color: white;
 }
 
 /* Steps Section */
