@@ -58,14 +58,20 @@ nav a {
   margin-bottom: 30px;
 }
 
+.top-row h2 {
+  font-size: 32px;
+}
+
+
 .book-btn {
-  background: orange;
+  background: #ff7b00;
   color: white;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
   font-size: 15px;
   cursor: pointer;
+  font-weight: 10px;
 }
 
 /* Summary cards */
@@ -99,7 +105,7 @@ nav a {
   background: #e9ebf1;
   border-radius: 20px;
   overflow: hidden;
-  width: 400px;
+  width: 1400px;
   margin-bottom: 20px;
 }
 .tab {
@@ -109,8 +115,13 @@ nav a {
   cursor: pointer;
   font-weight: 500;
 }
+
+.tab a {
+  text-decoration: none;
+  color: #333;
+}
 .tab.active {
-  background: white;
+  background: rgb(177, 173, 173);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }

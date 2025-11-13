@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QuickFix Dashboard - Service History</title>
-  <link rel="stylesheet" href="../styles/user.db2.style.css" />
-</head>
-<body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">Quick<span>Fix</span></div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#">How It Works</a>
-      <a href="#">Dashboard</a>
-    </nav>
-    <div class="nav-buttons">
-      <button class="customer">Customer</button>
-      <button class="logout">Logout</button>
-    </div>
-  </header>
-
-  <!-- Main Container -->
-  <main class="container">
-    <div class="header-row">
-      <div>
-        <h1>Welcome back, saravanaperumal!</h1>
-        <p class="subtitle">Manage your bookings and service history</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickFix Dashboard - Service History</title>
+    <link rel="stylesheet" href="../styles/user.db2.style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="logo">Quick<span>Fix</span></div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">How It Works</a>
+        <a href="#">Dashboard</a>
+      </nav>
+      <div class="nav-buttons">
+        <button class="customer">Customer</button>
+        <button class="logout">Logout</button>
       </div>
-      <button class="book-btn">+ Book New Service</button>
-    </div>
+    </header>
 
-    <!-- Stats Section -->
-    <div class="stats">
-      <div class="stat-box">
-        <h2>2</h2>
-        <p>Upcoming Bookings</p>
+    <!-- Main Container -->
+    <main class="container">
+      <div class="header-row">
+        <div>
+          <h1>Welcome back, saravanaperumal!</h1>
+          <p class="subtitle">Manage your bookings and service history</p>
+        </div>
+        <a href="./location.html"><button class="book-btn">+ Book New Service</button></a>
       </div>
-      <div class="stat-box">
-        <h2 class="green">2</h2>
-        <p>Completed Services</p>
+
+      <!-- Stats Section -->
+      <div class="stats">
+        <div class="stat-box">
+          <h2>2</h2>
+          <p>Upcoming Bookings</p>
+        </div>
+        <div class="stat-box">
+          <h2 class="green">2</h2>
+          <p>Completed Services</p>
+        </div>
+        <div class="stat-box">
+          <h2 class="orange">$140</h2>
+          <p>Total Spent</p>
+        </div>
       </div>
-      <div class="stat-box">
-        <h2 class="orange">$140</h2>
-        <p>Total Spent</p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab"><a href="./user.db1.html">Upcoming & Active</a></div>
+        <div class="tab active">Service History</div>
       </div>
-    </div>
 
-    <!-- Tabs -->
-    <div class="tabs">
-      <button>Upcoming & Active</button>
-      <button class="active">Service History</button>
-    </div>
+      <!-- Service History -->
+      <section class="bookings">
+        <h3>Service History</h3>
 
-    <!-- Service History -->
-    <section class="bookings">
-      <h3>Service History</h3>
-
-      <div class="booking-card">
-        <div class="left">
-          <img src="https://via.placeholder.com/60" alt="profile" />
-          <div class="details">
-            <h4>Mike Johnson</h4>
-            <p class="service">Bike Service</p>
-            <p>📅 2024-01-08 at 11:00 AM</p>
-            <p>📍 789 Pine St, City</p>
-            <p class="price">$25</p>
+        <div class="booking-card">
+          <div class="left">
+            <img src="https://via.placeholder.com/60" alt="profile" />
+            <div class="details">
+              <h4>Mike Johnson</h4>
+              <p class="service">Bike Service</p>
+              <p>📅 2024-01-08 at 11:00 AM</p>
+              <p>📍 789 Pine St, City</p>
+              <p class="price">$25</p>
+            </div>
+          </div>
+          <div class="right">
+            <div class="status completed">Completed</div>
+            <div class="rating">⭐ 5/5</div>
           </div>
         </div>
-        <div class="right">
-          <div class="status completed">Completed</div>
-          <div class="rating">⭐ 5/5</div>
-        </div>
-      </div>
 
-      <div class="booking-card">
-        <div class="left">
-          <img src="https://via.placeholder.com/60" alt="profile" />
-          <div class="details">
-            <h4>John Smith</h4>
-            <p class="service">Oil Change</p>
-            <p>📅 2024-01-03 at 3:00 PM</p>
-            <p>📍 321 Elm St, City</p>
-            <p class="price">$40</p>
+        <div class="booking-card">
+          <div class="left">
+            <img src="https://via.placeholder.com/60" alt="profile" />
+            <div class="details">
+              <h4>John Smith</h4>
+              <p class="service">Oil Change</p>
+              <p>📅 2024-01-03 at 3:00 PM</p>
+              <p>📍 321 Elm St, City</p>
+              <p class="price">$40</p>
+            </div>
+          </div>
+          <div class="right">
+            <div class="status completed">Completed</div>
+            <div class="rating">⭐ 4/5</div>
           </div>
         </div>
-        <div class="right">
-          <div class="status completed">Completed</div>
-          <div class="rating">⭐ 4/5</div>
-        </div>
-      </div>
-    </section>
-  </main>
-</body>
+      </section>
+    </main>
+  </body>
 </html>

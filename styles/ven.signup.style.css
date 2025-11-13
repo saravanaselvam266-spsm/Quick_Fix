@@ -34,25 +34,6 @@ nav a:hover {
   color: #007bff;
 }
 
-.auth a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: #333;
-}
-
-.auth button {
-  background: #ff8c00;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.auth button:hover {
-  background-color: #e67e00;
-}
-
 /* MAIN CONTENT */
 main {
   display: flex;
@@ -65,8 +46,6 @@ main {
   display: flex;
   justify-content: center;
   width: 100%;
-
-  
 }
 
 .form-container {
@@ -96,7 +75,7 @@ h2 {
   margin-bottom: 20px 0;
 }
 
-.tab button{
+.tab button {
   flex: 1;
   padding: 8px 0;
   border: none;

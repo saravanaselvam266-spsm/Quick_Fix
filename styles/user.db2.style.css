@@ -63,10 +63,7 @@ nav a {
   margin-bottom: 30px;
 }
 
-.subtitle {
-  margin-top: 5px;
-  color: #777;
-}
+
 
 /* Book Button */
 .book-btn {
@@ -114,22 +111,29 @@ nav a {
   display: flex;
   background: #ebecf0;
   border-radius: 20px;
-  width: fit-content;
+  overflow: hidden;
+  width: 1400px;
   margin-bottom: 20px;
 }
 
-.tabs button {
-  border: none;
-  background: transparent;
-  padding: 10px 25px;
-  border-radius: 20px;
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
   cursor: pointer;
   font-weight: 500;
+  
 }
 
-.tabs .active {
-  background: #fff;
+.tab a {
+  text-decoration: none;
+  color: #333;
+}
+
+.tab.active {
+  background: rgb(177, 173, 173);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 }
 
 /* Booking Cards */
