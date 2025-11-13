@@ -1,13 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
 body {
-  background-color: #f5f7fb;
-  color: #222;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f7f8fc;
 }
 
 /* Header */
@@ -23,6 +17,11 @@ body {
 .logo {
   font-size: 22px;
   font-weight: bold;
+  
+}
+
+.logo a {
+  text-decoration: none;
   color: #0078ff;
 }
 

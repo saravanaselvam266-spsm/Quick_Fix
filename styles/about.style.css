@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f7f8fc;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 60px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #0078ff;
+}
+
+.logo span {
+  color: #ff8c00;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav a.active {
+  color: #0078ff;
+}
+
+.logout-btn {
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* About Section */
+.about-hero {
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.about-hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.about-hero p {
+  font-size: 18px;
+  color: #555;
+}
+
+.about-content {
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.about-box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.about-box h2 {
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.about-box p {
+  color: #444;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.about-box ul li {
+  font-size: 16px;
+  margin: 6px 0;
+}
