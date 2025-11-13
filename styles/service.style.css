@@ -16,11 +16,15 @@ header {
 .logo {
   font-size: 24px;
   font-weight: bold;
-  color: #007bff;
 }
 
 .logo span {
   color: #ff9500;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #007bff;
 }
 
 nav a {
@@ -175,13 +179,10 @@ select {
   background-color: lightgrey;
 }
 
-select:valid~.buttons-row > .next-btn{
+select:valid ~ .buttons-row > .next-btn {
   background: #0080ff;
-
 }
 
-.next-btn a {
-  background: #61aefb;
+.next-btn .find-mechanics {
   color: white;
-  border: none;
 }
