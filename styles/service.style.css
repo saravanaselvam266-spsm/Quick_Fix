@@ -177,8 +177,10 @@ select {
 
 select:valid~.buttons-row > .next-btn{
   background: #0080ff;
+
 }
-.next-btn {
+
+.next-btn a {
   background: #61aefb;
   color: white;
   border: none;

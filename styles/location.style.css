@@ -96,7 +96,7 @@ nav a:hover {
 
 .line {
   width: 70px;
-  height: 2px;
+  /* height: 2px; */
   background: #ccc;
 }
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickFix Dashboard</title>
+    <link rel="stylesheet" href="../styles/user.db1.style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="navbar">
+      <div class="logo">Quick<span>Fix</span></div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">How It Works</a>
+        <a href="#" class="active">Dashboard</a>
+      </nav>
+      <div class="user-buttons">
+        <button class="customer">Customer</button>
+        <button class="logout">Logout</button>
+      </div>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+      <section class="dashboard">
+        <div class="top-row">
+          <div>
+            <h2>Welcome back, saravanaperumal!</h2>
+            <p>Manage your bookings and service history</p>
+          </div>
+          <button class="book-btn">+ Book New Service</button>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary">
+          <div class="card">
+            <h3>2</h3>
+            <p>Upcoming Bookings</p>
+          </div>
+          <div class="card">
+            <h3 class="green">2</h3>
+            <p>Completed Services</p>
+          </div>
+          <div class="card">
+            <h3 class="orange">$140</h3>
+            <p>Total Spent</p>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab active">Upcoming & Active</div>
+          <div class="tab">Service History</div>
+        </div>
+
+        <h3 class="section-title">Upcoming & Active Bookings</h3>
+
+        <!-- Booking Cards -->
+        <div class="booking-card">
+          <img src="https://via.placeholder.com/60" class="profile" />
+          <div class="info">
+            <h4>John Smith</h4>
+            <p class="service">Car Service</p>
+            <p class="details">📅 2024-01-15 at 10:00 AM</p>
+            <p class="details">📍 123 Main St, City</p>
+            <p class="price">$75</p>
+          </div>
+          <span class="status upcoming">Upcoming</span>
+        </div>
+
+        <div class="booking-card">
+          <img src="https://via.placeholder.com/60" class="profile" />
+          <div class="info">
+            <h4>Sarah Davis</h4>
+            <p class="service">Emergency Help</p>
+            <p class="details">📅 2024-01-12 at 2:30 PM</p>
+            <p class="details">📍 456 Oak Ave, City</p>
+            <p class="price">$50</p>
+          </div>
+          <span class="status in-progress">In Progress</span>
+          <div class="actions">
+            <button>📞 Call</button>
+            <button>💬 Chat</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

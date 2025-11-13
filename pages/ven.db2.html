@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuickFix Dashboard - Job History</title>
+  <link rel="stylesheet" href="../styles/ven.db2.style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">Quick<span>Fix</span></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">How It Works</a>
+      <a href="#" class="active">Dashboard</a>
+    </nav>
+    <div class="user-controls">
+      <span class="role">Mechanic</span>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="dashboard">
+    <section class="welcome">
+      <div>
+        <h2>Welcome back, John!</h2>
+        <p>Manage your jobs and track earnings</p>
+      </div>
+      <span class="status online">🟢 Online</span>
+    </section>
+
+    <!-- Stats Cards -->
+    <div class="stats-cards">
+      <div class="card">
+        <h3 class="green">$120</h3>
+        <p>Today's Earnings</p>
+      </div>
+      <div class="card">
+        <h3 class="blue">$600</h3>
+        <p>This Week</p>
+      </div>
+      <div class="card">
+        <h3 class="orange">1</h3>
+        <p>Active Jobs</p>
+      </div>
+      <div class="card">
+        <h3>2</h3>
+        <p>Completed Today</p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button>Active Jobs</button>
+      <button class="active-tab">Job History</button>
+    </div>
+
+    <!-- Job History Section -->
+    <section class="jobs">
+      <h3>Job History</h3>
+
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h4>John Smith</h4>
+            <p class="job-type">Oil Change</p>
+          </div>
+          <span class="status completed">Completed</span>
+        </div>
+        <p class="job-info">📍 321 Elm St, Southside</p>
+        <p class="job-info">🕒 9:00 AM • 30 mins</p>
+        <p class="job-info">📞 +1 (555) 111-2222</p>
+        <p class="job-price">$40</p>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <div>
+            <h4>Lisa Wilson</h4>
+            <p class="job-type">Battery Replacement</p>
+          </div>
+          <span class="status completed">Completed</span>
+        </div>
+        <p class="job-info">📍 654 Maple Dr, Eastside</p>
+        <p class="job-info">🕒 11:30 AM • 45 mins</p>
+        <p class="job-info">📞 +1 (555) 333-4444</p>
+        <p class="job-price">$50</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
