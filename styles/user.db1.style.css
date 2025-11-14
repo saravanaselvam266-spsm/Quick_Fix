@@ -58,7 +58,7 @@ nav a {
   margin-bottom: 30px;
 }
 
-.top-row h2 {
+.top-row div h2 {
   font-size: 32px;
 }
 
@@ -120,8 +120,9 @@ nav a {
   text-decoration: none;
   color: #333;
 }
-.tab.active {
-  background: rgb(177, 173, 173);
+
+.tab .active {
+  background: rgb(177, 173, 173);;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }
@@ -168,7 +169,7 @@ nav a {
   margin-top: 5px;
 }
 
-.status {
+.status .working{
   position: absolute;
   top: 15px;
   right: 20px;

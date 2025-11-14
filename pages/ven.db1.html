@@ -1,100 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuickFix Mechanic Dashboard</title>
-  <link rel="stylesheet" href="../styles/ven.db1.style.css">
-</head>
-<body>
-  <!-- Header -->
-  <header class="navbar">
-    <div class="logo"><a href="../index.html">Quick<span>Fix</span></a></div>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="#">Services</a>
-      <a href="#">How It Works</a>
-      <a href="#" class="active">Dashboard</a>
-    </nav>
-    <div class="user-buttons">
-      <button class="role">Mechanic</button>
-      <button class="logout">Logout</button>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickFix Mechanic Dashboard</title>
+    <link rel="stylesheet" href="../styles/ven.db1.style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="navbar">
+      <div class="logo">
+        <a href="../index.html">Quick<span>Fix</span></a>
+      </div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="#">Services</a>
+        <a href="#">How It Works</a>
+        <a href="#" class="active">Dashboard</a>
+      </nav>
+      <div class="user-buttons">
+        <button class="role">Mechanic</button>
+        <button class="logout">Logout</button>
+      </div>
+    </header>
 
-  <!-- Dashboard Main -->
-  <section class="dashboard">
-    <div class="top-row">
-      <div>
-        <h2>Welcome back, John!</h2>
-        <p>Manage your jobs and track earnings</p>
+    <!-- Dashboard Main -->
+    <section class="dashboard">
+      <div class="top-row">
+        <div>
+          <h2>Welcome back, John!</h2>
+          <p>Manage your jobs and track earnings</p>
+        </div>
+        <button class="status-btn online">🟢 Online</button>
       </div>
-      <button class="status-btn online">🟢 Online</button>
-    </div>
 
-    <!-- Summary Cards -->
-    <div class="summary">
-      <div class="card">
-        <h3 class="green">$120</h3>
-        <p>Today's Earnings</p>
+      <!-- Summary Cards -->
+      <div class="summary">
+        <div class="card">
+          <h3 class="green">$120</h3>
+          <p>Today's Earnings</p>
+        </div>
+        <div class="card">
+          <h3 class="blue">$600</h3>
+          <p>This Week</p>
+        </div>
+        <div class="card">
+          <h3 class="orange">1</h3>
+          <p>Active Jobs</p>
+        </div>
+        <div class="card">
+          <h3>2</h3>
+          <p>Completed Today</p>
+        </div>
       </div>
-      <div class="card">
-        <h3 class="blue">$600</h3>
-        <p>This Week</p>
-      </div>
-      <div class="card">
-        <h3 class="orange">1</h3>
-        <p>Active Jobs</p>
-      </div>
-      <div class="card">
-        <h3>2</h3>
-        <p>Completed Today</p>
-      </div>
-    </div>
 
-    <!-- Tabs -->
-    <div class="tabs">
-      <div class="tab active">Active Jobs</div>
-      <div class="tab">Job History</div>
-    </div>
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab active">Active Jobs</div>
+        <div class="tab"><a href="./ven.db2.html">Job History</a></div>
+      </div>
 
-    <!-- Active Jobs -->
-    <h3 class="section-title">Active Jobs</h3>
+      <!-- Active Jobs -->
+      <h3 class="section-title">Active Jobs</h3>
 
-    <div class="job-card">
-      <div class="info">
-        <h4>Emily Davis</h4>
-        <p class="service">Bike Service</p>
-        <p class="details">📍 789 Pine St, Uptown</p>
-        <p class="details">⏰ 4:00 PM • 45 mins</p>
-        <p class="details">📞 +1 (555) 456-7890</p>
-        <p class="price">$25</p>
-      </div>
-      <span class="status working">Working</span>
+      <div class="job-card">
+        <div class="info">
+          <h4>Emily Davis</h4>
+          <p class="service">Bike Service</p>
+          <p class="details">📍 789 Pine St, Uptown</p>
+          <p class="details">⏰ 4:00 PM • 45 mins</p>
+          <p class="details">📞 +1 (555) 456-7890</p>
+          <p class="price">$25</p>
+        </div>
+        <span class="status working">Working</span>
 
-      <div class="job-actions">
-        <button class="nav-btn">🧭 Navigate</button>
-        <button class="call-btn">📞 Call</button>
-        <button class="complete-btn">Complete Job</button>
+        <div class="job-actions">
+          <button class="nav-btn">🧭 Navigate</button>
+          <button class="call-btn">📞 Call</button>
+          <button class="complete-btn">Complete Job</button>
+        </div>
       </div>
-    </div>
-
-    <!-- Quick Actions -->
-    <h3 class="section-title">Quick Actions</h3>
-    <div class="quick-actions">
-      <div class="quick-card">
-        <p>📈</p>
-        <h4>View Earnings Report</h4>
-      </div>
-      <div class="quick-card">
-        <p>⚙️</p>
-        <h4>Update Availability</h4>
-      </div>
-      <div class="quick-card">
-        <p>📞</p>
-        <h4>Contact Support</h4>
-      </div>
-    </div>
-  </section>
-</body>
+    </section>
+  </body>
 </html>

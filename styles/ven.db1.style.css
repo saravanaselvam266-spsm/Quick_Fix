@@ -62,6 +62,10 @@ nav a.active {
   margin-bottom: 30px;
 }
 
+.top-row h2 {
+  font-size: 26px;
+}
+
 .status-btn {
   border: none;
   border-radius: 20px;
@@ -107,7 +111,7 @@ nav a.active {
   background: #e9ebf1;
   border-radius: 20px;
   overflow: hidden;
-  width: 400px;
+  width: 1400px;
   margin-bottom: 20px;
 }
 .tab {
@@ -117,8 +121,14 @@ nav a.active {
   cursor: pointer;
   font-weight: 500;
 }
+
+.tab a {
+  text-decoration: none;
+  color: #333;
+}
+
 .tab.active {
-  background: white;
+  background: rgb(177, 173, 173);;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }

@@ -17,7 +17,6 @@ body {
 .logo {
   font-size: 22px;
   font-weight: bold;
-  
 }
 
 .logo a {
@@ -37,26 +36,19 @@ nav a {
 }
 
 nav a.active {
-  font-weight: 600;
+  color: #0078ff;
 }
 
-.user-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.role {
-  font-size: 15px;
-}
-
-.logout-btn {
-  border: 1px solid #aaa;
-  background: transparent;
-  border-radius: 6px;
-  padding: 6px 14px;
+.user-buttons button {
+  margin-left: 10px;
+  padding: 6px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
   cursor: pointer;
-  font-size: 14px;
+}
+.logout {
+  border-color: #000;
 }
 
 /* Main Layout */
@@ -124,28 +116,29 @@ nav a.active {
 /* Tabs */
 .tabs {
   display: flex;
-  justify-content: center;
-  background: #fff;
+  background: #e9ebf1;
   border-radius: 20px;
   overflow: hidden;
-  width: 60%;
-  margin: 0 auto 20px auto;
+  width: 1400px;
+  margin-bottom: 20px;
 }
-
-.tabs button {
+.tab {
   flex: 1;
-  padding: 10px;
-  border: none;
-  background: transparent;
-  font-size: 15px;
-  font-weight: 500;
+  text-align: center;
+  padding: 8px 0;
   cursor: pointer;
+  font-weight: 500;
 }
 
-.tabs button.active-tab {
-  background: #fff;
-  font-weight: 700;
-  border-bottom: 3px solid #0078ff;
+.tab a {
+  text-decoration: none;
+  color: #333;
+}
+
+.tab.active {
+  background: rgb(177, 173, 173);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 }
 
 /* Job Cards */
