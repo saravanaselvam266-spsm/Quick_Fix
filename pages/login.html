@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuickFix - Customer Portal</title>
-  <link rel="stylesheet" href="../styles/login.style.css">
-</head>
-<body>
-  <header>
-    <div class="logo">Quick<span>Fix</span></div>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="#">Services</a>
-      <a href="#">How It Works</a>
-    </nav>
-    <div class="auth">
-      <a href="#">Login</a>
-      <button>Sign Up</button>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickFix - Customer Portal</title>
+    <link rel="stylesheet" href="../styles/login.style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Quick<span>Fix</span></div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="#">Services</a>
+        <a href="#">How It Works</a>
+      </nav>
+    </header>
 
-  <main>
-    <div class="login-box">
-      <h2>Customer Portal</h2>
-      <p>Login or create your account</p>
+    <main>
+      <div class="login-box">
+        <h2>Customer Portal</h2>
+        <p>Login or create your account</p>
 
-      <div class="tab">
-        <button class="active">Login</button>
-        <button><a href="./signup.html">Sign Up</a></button>
+        <div class="tab">
+          <button class="active">Login</button>
+          <button><a href="./signup.html">Sign Up</a></button>
+        </div>
+
+        <form>
+          <label>Email / Phone</label>
+          <input type="text" placeholder="Enter your email or phone" required />
+
+          <label>Password</label>
+          <input type="password" placeholder="Enter your password" required />
+
+          <button type="submit" class="login-btn">Login</button>
+
+          <a href="#" class="forgot">Forgot Password?</a>
+
+          <p class="join">
+            Are you a mechanic?
+            <a href="../pages/ven.login.html">Join as Mechanic</a>
+          </p>
+        </form>
       </div>
-
-      <form>
-        <label>Email / Phone</label>
-        <input type="text" placeholder="Enter your email or phone" required>
-
-        <label>Password</label>
-        <input type="password" placeholder="Enter your password" required>
-
-        <button type="submit" class="login-btn">Login</button>
-
-        <a href="#" class="forgot">Forgot Password?</a>
-
-        <p class="join">Are you a mechanic? <a href="../pages/ven.login.html">Join as Mechanic</a></p>
-      </form>
-    </div>
-  </main>
-</body>
+    </main>
+  </body>
 </html>
