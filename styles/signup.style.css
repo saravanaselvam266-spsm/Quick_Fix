@@ -16,8 +16,13 @@ header {
 .logo {
   font-size: 22px;
   font-weight: 700;
+}
+
+.logo a {
+  text-decoration: none;
   color: #007bff;
 }
+
 .logo span {
   color: #ff8c00;
 }
