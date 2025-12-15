@@ -8,7 +8,9 @@
   </head>
   <body>
     <header>
-      <div class="logo"><a href="../index.html">Quick<span>Fix</span></a></div>
+      <div class="logo">
+        <a href="../index.html">Quick<span>Fix</span></a>
+      </div>
       <nav>
         <a href="../index.html">Home</a>
         <a href="#">Services</a>
@@ -28,12 +30,22 @@
 
         <form>
           <label>Email / Phone</label>
-          <input type="text" placeholder="Enter your email or phone" required />
+          <input
+            type="text"
+            id="loginInput"
+            placeholder="Enter your email or phone"
+            required
+          />
 
           <label>Password</label>
-          <input type="password" placeholder="Enter your password" required />
+          <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter your password"
+            required
+          />
 
-          <button type="submit" class="login-btn">Login</button>
+          <button class="login-btn">Login</button>
 
           <a href="#" class="forgot">Forgot Password?</a>
 
@@ -44,5 +56,6 @@
         </form>
       </div>
     </main>
+    <script src="../js/login.js"></script>
   </body>
 </html>
