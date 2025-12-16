@@ -25,44 +25,61 @@
 
     <main class="container">
       <div class="steps">
-        <div class="step active">1</div>
+        <div class="step active" id="step1-indicator">1</div>
         <div class="line"></div>
-        <div class="step">2</div>
+        <div class="step" id="step2-indicator">2</div>
         <div class="line"></div>
-        <div class="step">3</div>
-        <div class="line"></div>
-        <div class="step">4</div>
+        <div class="step" id="step3-indicator">3</div>
       </div>
       <div class="labels">
-        <span>Location</span>
         <span>Service</span>
-        <span>Vendor</span>
-        <span>Confirm</span>
+        <span>Payment</span>
+        <span>Location</span>
       </div>
 
-      <form action="./service.html">
-        <div class="form-box">
-          <h2>Enter Your Location</h2>
-          <p>Where do you need the mechanic to come?</p>
-
-          <label for="address">Address</label>
-          <input
-            type="text"
-            id="address"
-            placeholder="Enter your address or use GPS"
-            required
-          />
-
-          <div class="map-box">
-            <div class="map-placeholder">
-              <span>📍</span>
-              <p>Interactive Map Would Appear Here</p>
+      <div class="form-box">
+        
+        <!-- STEP 1: SERVICE SELECTION -->
+        <div id="step-1" class="wizard-step">
+            <h2>Select a Service</h2>
+            <p>What issue are you facing?</p>
+            <div id="service-list-container" style="display: flex; gap: 10px; flex-direction: column; margin-bottom: 20px;">
+                <p>Loading services...</p>
             </div>
-          </div>
-
-          <button type="submit" class="continue-btn">Continue</button>
         </div>
-      </form>
+
+        <!-- STEP 2: PAYMENT METHOD -->
+        <div id="step-2" class="wizard-step" style="display: none;">
+            <h2>Payment Method</h2>
+            <p>How would you like to pay?</p>
+            <div class="payment-options" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <button type="button" class="pay-btn" onclick="selectPayment('Cash')">💵 Cash</button>
+                <button type="button" class="pay-btn" onclick="selectPayment('Card')">💳 Card</button>
+                <button type="button" class="pay-btn" onclick="selectPayment('UPI')">📱 UPI</button>
+            </div>
+            <button type="button" class="back-btn" onclick="showStep(1)">Back</button>
+        </div>
+
+        <!-- STEP 3: LOCATION -->
+        <div id="step-3" class="wizard-step" style="display: none;">
+            <h2>Enter Location</h2>
+            <p>Where should the mechanic come?</p>
+            
+            <label for="address">Address / Landmark</label>
+            <input type="text" id="address" placeholder="e.g. 123 Main St" required>
+            
+            <button type="button" onclick="detectLocation()" style="background-color: #28a745; margin-bottom: 10px;">📍 Use My Current Location</button>
+            
+            <div style="margin-top: 20px;">
+                <button type="button" class="back-btn" onclick="showStep(2)">Back</button>
+                <button type="button" class="continue-btn" onclick="finalSubmitBooking()">✅ Confirm Booking</button>
+            </div>
+        </div>
+
+      </div>
+    </main>
+    <!-- Add our new script -->
+    <script src="../js/booking_setup.js"></script>
     </main>
   </body>
 </html>

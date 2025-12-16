@@ -30,53 +30,93 @@
 
         <form>
           <label>Full Name</label>
-          <input type="text" placeholder="Enter your full name" required />
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required
+          />
 
           <label>Email</label>
-          <input type="email" placeholder="Enter your email" required />
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
 
           <label>Phone</label>
-          <input type="number" placeholder="Enter your phone number" required />
+          <input
+            type="number"
+            id="phone"
+            placeholder="Enter your phone number"
+            required
+          />
 
           <label>Years of Experience</label>
-          <input type="number" placeholder="Enter years of experience" required />
+          <input
+            type="number"
+            id="experience"
+            placeholder="Enter years of experience"
+            required
+          />
 
           <label>Specialties (Select all that apply)</label>
           <div class="specialties">
             <div class="right_menu">
-              <div><input type="checkbox" /> Bike Service</div>
-              <div><input type="checkbox" /> Car Service</div>
-              <div><input type="checkbox" /> Emergency Help</div>
-              <div><input type="checkbox" /> Oil Change</div>
-              <div><input type="checkbox" /> Battery Replacement</div>
+              <div>
+                <input type="checkbox" class="specialty" /> Bike Service
+              </div>
+              <div><input type="checkbox" class="specialty" /> Car Service</div>
+              <div>
+                <input type="checkbox" class="specialty" /> Emergency Help
+              </div>
+              <div><input type="checkbox" class="specialty" /> Oil Change</div>
+              <div>
+                <input type="checkbox" class="specialty" /> Battery Replacement
+              </div>
             </div>
             <div class="left_menu">
-              <div><input type="checkbox" /> Tire Change</div>
-              <div><input type="checkbox" /> Brake Repair</div>
-              <div><input type="checkbox" /> Engine Diagnostics</div>
-              <div><input type="checkbox" /> AC Repair</div>
-              <div><input type="checkbox" /> Electrical Work</div>
+              <div><input type="checkbox" class="specialty" /> Tire Change</div>
+              <div>
+                <input type="checkbox" class="specialty" /> Brake Repair
+              </div>
+              <div>
+                <input type="checkbox" class="specialty" /> Engine Diagnostics
+              </div>
+              <div><input type="checkbox" class="specialty" /> AC Repair</div>
+              <div>
+                <input type="checkbox" class="specialty" /> Electrical Work
+              </div>
             </div>
           </div>
 
           <label>Street Address</label>
-          <input type="text" placeholder="Enter your street address" />
+          <input
+            type="text"
+            id="address"
+            placeholder="Enter your street address"
+          />
 
           <div class="row">
             <div>
               <label>City</label>
-              <input type="text" placeholder="City" />
+              <input type="text" id="city" placeholder="City" />
             </div>
             <div>
               <label>State</label>
-              <input type="text" placeholder="State" />
+              <input type="text" id="state" placeholder="State" />
             </div>
           </div>
 
           <label>Password</label>
-          <input type="password" placeholder="Create a password" />
+          <input
+            type="password"
+            id="password"
+            placeholder="Create a password"
+          />
 
-          <button type="submit" class="submit-btn">Join as Mechanic</button>
+          <button class="submit-btn">Join as Mechanic</button>
         </form>
 
         <p class="switch">
@@ -84,8 +124,6 @@
         </p>
       </div>
     </main>
+    <script src="../js/vendor_signup.js"></script>
   </body>
-  <script>
-    
-  </script>
 </html>

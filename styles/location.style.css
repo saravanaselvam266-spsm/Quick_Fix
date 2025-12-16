@@ -16,7 +16,6 @@ header {
 .logo {
   font-size: 24px;
   font-weight: bold;
-  
 }
 
 .logo a {
@@ -44,11 +43,6 @@ nav a:hover {
   color: #333;
 }
 
-.auth a:hover {
-  cursor: pointer;
-  color: #2786e6;
-}
-
 .auth button {
   background: #ff8c00;
   color: white;
@@ -61,19 +55,11 @@ nav a:hover {
   background: #e67e00;
 }
 
-.signup {
-  background: #ff9500;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-}
-
 /* Steps */
 .container {
   text-align: center;
   margin-top: 50px;
+  width: 100%;
 }
 
 .steps {
@@ -95,7 +81,7 @@ nav a:hover {
 }
 
 .step.active {
-  background: #007bff;
+  background: #007bff; /* Primary Blue */
 }
 
 .line {
@@ -113,74 +99,113 @@ nav a:hover {
   font-size: 14px;
 }
 
-/* Form Box */
+/* Form Box / Wizard Container */
 .form-box {
   background: white;
-  width: 800px;
-  height: 500px;
+  width: 600px; /* Reduced width for better focus */
+  min-height: 400px;
   margin: auto;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Softer shadow */
   text-align: left;
 }
 
 .form-box h2 {
   text-align: center;
+  margin-top: 0;
+  color: #333;
 }
 
 .form-box p {
   text-align: center;
   color: #666;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 15px;
+/* Wizard Elements */
+.service-select-btn {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: all 0.2s;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
+.service-select-btn:hover {
+    background-color: #e9ecef;
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-input:valid~button{
-  background: #0080ff;
+.payment-options {
+    justify-content: center;
 }
 
-
-/* Map Box */
-.map-box {
-  background: #e9edf3;
-  height: 250px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  margin-bottom: 20px;
+.pay-btn {
+    flex: 1;
+    padding: 15px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.map-placeholder span {
-  font-size: 30px;
-  display: block;
-  text-align: center;
+.pay-btn:hover {
+    border-color: #ff9500;
+    color: #ff9500;
+    background: #fff8e1;
 }
 
+/* Buttons */
 .continue-btn {
   width: 100%;
-  background: #61aefb;
+  background: #28a745; /* Green for finish */
   border: none;
   padding: 12px;
   color: white;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.continue-btn:hover {
+    background: #218838;
+}
+
+.back-btn {
+    padding: 10px 20px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.back-btn:hover {
+    background: #5a6268;
+}
+
+input[type="text"] {
+  width: 100%;
+  box-sizing: border-box; /* Fix padding issue */
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
 }
 
 

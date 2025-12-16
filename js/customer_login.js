@@ -35,15 +35,15 @@ function loginUser() {
 
         // redirect based on role
         if (data.role === "customer") {
-          window.location.href = "/pages/user.db1.html";
+          window.location.href = "./user.db1.html";
         } else if (data.role === "vendor") {
-          window.location.href = "/pages/ven.db1.html";
+          window.location.href = "./ven.db1.html";
         }
       }
     })
     .catch(error => {
       console.error("Error:", error);
-      alert("Server error");
+      alert("Login failed: " + error.message);
     });
 }
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFix - Admin Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; }
+        .container { max-width: 1000px; margin: 50px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #f8f9fa; }
+        input[type="number"] { padding: 8px; border: 1px solid #ddd; border-radius: 4px; width: 100px; }
+        button { background-color: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+        <h1>Admin Dashboard - Service Pricing</h1>
+
+        <!-- Add Service Form -->
+        <div style="margin-bottom: 30px; background: #f8f9fa; padding: 20px; border-radius: 8px;">
+            <h3 style="margin-top: 0;">Add New Service</h3>
+            <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap;">
+                <div>
+                    <label>Service Name</label><br>
+                    <input type="text" id="newServiceName" placeholder="e.g. Oil Change" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div>
+                    <label>Description</label><br>
+                    <input type="text" id="newServiceDesc" placeholder="Description" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div>
+                    <label>Vehicle Type</label><br>
+                    <input type="text" id="newVehicleType" placeholder="e.g. Car" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div>
+                    <label>Price ($)</label><br>
+                    <input type="number" id="newServicePrice" placeholder="0.00">
+                </div>
+                <button onclick="createService()">+ Add Service</button>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Service Name</th>
+                    <th>Description</th>
+                    <th>Current Price ($)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="serviceList">
+                <!-- Services will be loaded here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/admin_manager.js"></script>
+</body>
+</html>
