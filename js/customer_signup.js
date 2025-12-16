@@ -5,9 +5,10 @@ function createCustomer() {
         const email = document.getElementById("email").value;
         const phone = document.getElementById("phone").value;
         const password = document.getElementById("password").value;
-        const address = document.getElementById("address").value;
-        const city = document.getElementById("city").value;
-        const state = document.getElementById("state").value;
+        const address = document.getElementById("address").value +
+         ", " + document.getElementById("city").value +
+         ", " + document.getElementById("state").value;
+       
 
         if (!name || !email || !phone || !password) {
           alert("Please fill all required fields");
@@ -34,8 +35,15 @@ function createCustomer() {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log("Success:", data);
-            alert("Account created successfully!");
+            if (data.error){
+              alert(data.error);
+          }else {
+
+              alert("Account created successfully!");
+              window.location.href = "./login.html"
+              console.log("Success:", data);
+
+            }
           })
           .catch((error) => {
             console.error("Error:", error);

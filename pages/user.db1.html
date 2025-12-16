@@ -18,7 +18,7 @@
       </nav>
       <div class="user-buttons">
         <button class="customer">Customer</button>
-        <button class="logout">Logout</button>
+        <button class="logout" onclick="logout()">Logout</button>
       </div>
     </header>
 
@@ -27,7 +27,7 @@
       <section class="dashboard">
         <div class="top-row">
           <div>
-            <h2>Welcome back, saravanaperumal!</h2>
+            <h2>Welcome, <span id="userName"></span>!</h2>
             <p>Manage your bookings and service history</p>
           </div>
           <a href="./location.html"
@@ -38,15 +38,15 @@
         <!-- Summary Cards -->
         <div class="summary">
           <div class="card">
-            <h3>2</h3>
+            <h3 id="upcomingCount">0</h3>
             <p>Upcoming Bookings</p>
           </div>
           <div class="card">
-            <h3 class="green">2</h3>
+            <h3 class="green" id="completedCount">0</h3>
             <p>Completed Services</p>
           </div>
           <div class="card">
-            <h3 class="orange">$140</h3>
+            <h3 class="orange" id="totalSpent">$0</h3>
             <p>Total Spent</p>
           </div>
         </div>
@@ -60,34 +60,10 @@
         <h3 class="section-title">Upcoming & Active Bookings</h3>
 
         <!-- Booking Cards -->
-        <div class="booking-card">
-          <img src="https://via.placeholder.com/60" class="profile" />
-          <div class="info">
-            <h4>John Smith</h4>
-            <p class="service">Car Service</p>
-            <p class="details">📅 2024-01-15 at 10:00 AM</p>
-            <p class="details">📍 123 Main St, City</p>
-            <p class="price">$75</p>
-          </div>
-          <span class="status upcoming">Upcoming</span>
-        </div>
-
-        <div class="booking-card">
-          <img src="https://via.placeholder.com/60" class="profile" />
-          <div class="info">
-            <h4>Sarah Davis</h4>
-            <p class="service">Emergency Help</p>
-            <p class="details">📅 2024-01-12 at 2:30 PM</p>
-            <p class="details">📍 456 Oak Ave, City</p>
-            <p class="price">$50</p>
-          </div>
-          <span class="status in-progress">In Progress</span>
-          <div class="actions">
-            <button>📞 Call</button>
-            <button>💬 Chat</button>
-          </div>
-        </div>
+         <div id="bookingList"></div>
+        
       </section>
     </main>
+    <script src="../js/customer_dashboard.js"></script>
   </body>
 </html>
