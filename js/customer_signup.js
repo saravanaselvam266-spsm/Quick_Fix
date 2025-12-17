@@ -9,7 +9,6 @@ function createCustomer() {
     ", " + document.getElementById("city").value +
     ", " + document.getElementById("state").value;
 
-
   if (!name || !email || !phone || !password) {
     alert("Please fill all required fields");
     return;
@@ -36,11 +35,8 @@ function createCustomer() {
       if (data.error) {
         alert(data.error);
       } else {
-
         alert("Account created successfully!");
         window.location.href = "./login.html"
-        console.log("Success:", data);
-
       }
     })
     .catch((error) => {

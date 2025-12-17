@@ -9,7 +9,7 @@ if (!user) {
 // --------------------
 // Set username
 // --------------------
-document.getElementById("userName").innerText = user.name;
+document.getElementById("userName").innerText = user.name;        
 
 // --------------------
 // Load dashboard summary
