@@ -123,79 +123,61 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
-/* Wizard Elements */
-.service-select-btn {
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    transition: all 0.2s;
+/* Wizard Form Steps */
+.wizard-step {
+  display: none;
+  /* position: relative; bottom: 400px;  Removed relative positioning hack, using standard flow */
+  width: 100%;
 }
 
-.service-select-btn:hover {
-    background-color: #e9ecef;
-    border-color: #007bff;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+#step-1 {
+  display: block; /* Default visible */
 }
 
+/* Service List */
+#service-list-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Payment Options */
 .payment-options {
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.pay-btn {
-    flex: 1;
-    padding: 15px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s;
+.payment-options button {
+  padding: 10px;
+  border-radius: 5px;
+
+
 }
 
-.pay-btn:hover {
-    border-color: #ff9500;
-    color: #ff9500;
-    background: #fff8e1;
+.payment-options button:hover {
+  background-color: greenyellow;
 }
-
-/* Buttons */
-.continue-btn {
-  width: 100%;
-  background: #28a745; /* Green for finish */
-  border: none;
-  padding: 12px;
-  color: white;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.continue-btn:hover {
-    background: #218838;
-}
-
 .back-btn {
-    padding: 10px 20px;
-    background: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-right: 10px;
+  padding: 10px;
+  width: 100px;
+  background-color: gray;
+  border-radius: 10px;
 }
-.back-btn:hover {
-    background: #5a6268;
+.pay-btn {
+  margin-right: 20px;
 }
 
+.pay-btn:last-child {
+  margin-right: 0;
+}
+
+/* Input Fields */
 input[type="text"] {
-  width: 100%;
-  box-sizing: border-box; /* Fix padding issue */
+  width: 100%; /* Changed from fixed 500px to responsive */
+  max-width: 500px; 
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #ddd;
@@ -203,9 +185,61 @@ input[type="text"] {
   font-size: 14px;
 }
 
-input:focus {
-    outline: none;
-    border-color: #007bff;
+/* Buttons (Overrides or specific classes) */
+.back-btn {
+  /* position: relative; top: 50px; Removed hack */
+  margin-top: 20px;
+  background-color: #6c757d;
 }
+
+.continue-btn {
+  margin-top: 20px;
+  width: 300px;
+  max-width: 300px;
+  padding: 15px;
+  background-color: rgb(108, 232, 83);
+  border-radius: 10px;
+
+}
+
+/* Helper for detected location button */
+.locate-btn {
+  width: 100%;
+  max-width: 500px;
+  background-color: #28a745; 
+  margin-bottom: 10px;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Helper for detected location button */
+button[onclick="detectLocation()"] {
+  width: 100%;
+  max-width: 500px;
+
+}
+
+#step-2 {
+  display: none;
+  position: relative;
+  bottom: 400px;
+}
+
+#step-3 {
+   display: none;
+  position: relative;
+  bottom: 400px;
+
+}
+.payment-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
 
 

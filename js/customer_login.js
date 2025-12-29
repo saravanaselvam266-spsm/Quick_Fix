@@ -1,4 +1,6 @@
 
+const API_BASE_URL = "http://127.0.0.1:8000";
+
 document.querySelector(".login-btn").addEventListener("click", loginUser);
 
 function loginUser() {
@@ -16,7 +18,7 @@ function loginUser() {
     password: password
   };
 
-  fetch("http://127.0.0.1:8000/users/login", {
+  fetch(`${API_BASE_URL}/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -28,16 +30,18 @@ function loginUser() {
       if (data.error) {
         alert(data.error);
       } else {
-        alert("Login successful");
-
-        // save user info (optional)
-        localStorage.setItem("user", JSON.stringify(data));
-
-        // redirect based on role
+        // strict role check for Customer Portal
         if (data.role === "customer") {
+          alert("Login successful");
+          // save user info
+          localStorage.setItem("user", JSON.stringify(data));
           window.location.href = "./user.db1.html";
-        } else if (data.role === "vendor") {
-          window.location.href = "./ven.db1.html";
+
+        } else if (data.role === "vendor" || data.role === "mechanic") {
+          alert("Access Denied: You are trying to login as a Vendor on the Customer Portal. Please use the Vendor Login page.");
+          window.location.href = "./ven.login.html";
+        } else {
+          alert("Login failed: Unauthorized role.");
         }
       }
     })

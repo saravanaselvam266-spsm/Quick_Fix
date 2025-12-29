@@ -28,7 +28,7 @@
     <main class="dashboard">
       <section class="welcome">
         <div>
-          <h2>Welcome back, John!</h2>
+          <h2>Welcome, <span id="vendorName"></span>!</h2>
           <p>Manage your jobs and track earnings</p>
         </div>
         <span class="status online">🟢 Online</span>
@@ -63,36 +63,10 @@
       <!-- Job History Section -->
       <section class="jobs">
         <h3>Job History</h3>
-
-        <div class="job-card">
-          <div class="job-header">
-            <div>
-              <h4>John Smith</h4>
-              <p class="job-type">Oil Change</p>
-            </div>
-            <span class="status completed">Completed</span>
-          </div>
-          <p class="job-info">📍 321 Elm St, Southside</p>
-          <p class="job-info">🕒 9:00 AM • 30 mins</p>
-          <p class="job-info">📞 +1 (555) 111-2222</p>
-          <p class="job-price">$40</p>
-        </div>
-
-        <div class="job-card">
-          <div class="job-header">
-            <div>
-              <h4>Lisa Wilson</h4>
-              <p class="job-type">Battery Replacement</p>
-            </div>
-            <span class="status completed">Completed</span>
-          </div>
-          <p class="job-info">📍 654 Maple Dr, Eastside</p>
-          <p class="job-info">🕒 11:30 AM • 45 mins</p>
-          <p class="job-info">📞 +1 (555) 333-4444</p>
-          <p class="job-price">$50</p>
-        </div>
+        <p id="loadingMsg">Loading history...</p>
+        <!-- Dynamic content will be loaded here -->
       </section>
     </main>
-    <script src="../js/booking_setup.js"></script>
+    <script src="../js/vendor_history.js"></script>
   </body>
 </html>

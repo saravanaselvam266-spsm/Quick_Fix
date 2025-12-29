@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Should check if on wizard page (e.g. presence of step indicators)
     if (document.getElementById("service-list-container")) {
         loadServicesForWizard();
-    }
+    } 2
 });
 
 function showStep(stepNumber) {
@@ -92,7 +92,7 @@ async function detectLocation() {
         (position) => {
             bookingWizardState.lat = position.coords.latitude;
             bookingWizardState.lon = position.coords.longitude;
-            document.getElementById("address").value = "Lat: " + position.coords.latitude.toFixed(4) + ", Lon: " + position.coords.longitude.toFixed(4);
+            document.getElementById("address").value = "Lat: " + position.coords.latitude + ", Lon: " + position.coords.longitude;
             // Ideally reverse geocode here to get address string
             btn.innerText = "✅ Location Found";
         },
@@ -118,8 +118,8 @@ async function finalSubmitBooking() {
         customer_id: activeUser.user_id,
         service_id: bookingWizardState.service_id,
         address: bookingWizardState.address,
-        latitude: bookingWizardState.lat || 13.0827, // Fallback if typed manual
-        longitude: bookingWizardState.lon || 80.2707,
+        latitude: bookingWizardState.lat, // Fallback if typed manual
+        longitude: bookingWizardState.lon,
         price: bookingWizardState.service_price,
         status: "pending",
         vendor_id: null,
@@ -181,167 +181,9 @@ function startBookingStatusPolling(bookingId) {
 
 
 // ==========================================
-// VENDOR SIDE: DASHBOARD LOGIC
+// CLIENT SIDE: BOOKING LOGIC
 // ==========================================
+// (Kept for Customer Booking Wizard)
 
-let mechanicPollInterval = null;
+// ... (Vendor logic moved to vendor_dashboard.js and vendor_history.js) ...
 
-async function loadMechanicDashboard() {
-    const jobList = document.getElementById("jobList");
-    const myLat = 13.0827;
-    const myLon = 80.2707;
-    const radius = 50;
-
-    // Function to fetch jobs
-    const fetchJobs = async () => {
-        try {
-            const response = await fetch(`${API_BASE_URL}/bookings/nearby?lat=${myLat}&lon=${myLon}&radius=${radius}`);
-            const bookings = await response.json();
-
-            // Only update if we have new data or clean state (simple approach: wipe and redraw)
-            // Ideally diff the list, but for now redraw is fine.
-            jobList.innerHTML = "";
-
-            if (bookings.length === 0) {
-                jobList.innerHTML = "<p>No nearby jobs found. Scanning...</p>";
-                return;
-            }
-
-            bookings.forEach(booking => {
-                const card = document.createElement("div");
-                card.className = "job-card";
-                card.style.border = "1px solid #ddd";
-                card.style.padding = "15px";
-                card.style.marginBottom = "10px";
-                card.style.borderRadius = "8px";
-                card.style.backgroundColor = "#fff";
-                card.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
-
-                card.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <h3 style="margin:0 0 10px 0;">Request #${booking.booking_id}</h3>
-                            <p style="margin:5px 0;"><strong>📍 Loc:</strong> ${booking.address}</p>
-                            <p style="margin:5px 0;"><strong>💰 Price:</strong> $${booking.price}</p>
-                            <a href="https://www.google.com/maps?q=${booking.latitude},${booking.longitude}" target="_blank" 
-                               style="display:inline-block; margin-top:5px; color:#007bff; text-decoration:none; font-size:14px;">
-                               🗺️ View Location
-                            </a>
-                        </div>
-                        <button onclick="acceptBooking(${booking.booking_id})" 
-                            style="background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight:bold;">
-                            Accept
-                        </button>
-                    </div>
-                `;
-                jobList.appendChild(card);
-            });
-
-            // Notification logic (sound or visual) could go here
-
-        } catch (error) {
-            console.error("Failed to load jobs:", error);
-            // jobList.innerHTML = "<p>Error loading jobs.</p>";
-        }
-    };
-
-    // Initial fetch
-    fetchJobs();
-
-    // Start polling every 5 seconds if not already started
-    if (!mechanicPollInterval) {
-        mechanicPollInterval = setInterval(fetchJobs, 5000);
-    }
-}
-
-async function acceptBooking(bookingId) {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const vendorId = user ? user.user_id : 123; // Fallback for demo
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/bookings/${bookingId}/accept?vendor_id=${vendorId}`, {
-            method: "PUT"
-        });
-
-        if (response.ok) {
-            alert("✅ Job Accepted!");
-            // loadMechanicDashboard(); // Refresh immediately handled by interval usually, but can call explicitly
-            loadMechanicDashboard();
-        } else {
-            const err = await response.json();
-            alert("Error: " + err.detail);
-        }
-    } catch (error) {
-        console.error("Accept failed:", error);
-    }
-}
-
-// Function to load vendor job history (ven.db2.html)
-// Function to load vendor job history (ven.db2.html)
-async function loadVendorHistory() {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const vendorId = user ? user.user_id : 123;
-    const historyContainer = document.querySelector(".jobs"); // Section to append to
-
-    if (!historyContainer) return; // Not on the history page
-
-    // 1. Load Summary Stats (Today's earnings, etc.)
-    try {
-        const statRes = await fetch(`${API_BASE_URL}/users/vendor/stats/${vendorId}`);
-        if (statRes.ok) {
-            const stats = await statRes.json();
-            document.getElementById("todayEarnings").textContent = "$" + (stats.today_earnings || 0);
-            document.getElementById("weekEarnings").textContent = "$" + (stats.week_earnings || 0);
-            document.getElementById("activeJobs").textContent = stats.active_jobs || 0;
-            document.getElementById("completedToday").textContent = stats.completed_today || 0;
-        }
-    } catch (e) {
-        console.warn("Could not load stats", e);
-    }
-
-    // 2. Load Job History
-    try {
-        const response = await fetch(`${API_BASE_URL}/bookings/vendor/${vendorId}`);
-        if (!response.ok) throw new Error("Could not fetch history");
-
-        const bookings = await response.json();
-
-        // Clear existing static cards (keeping the header)
-        const header = historyContainer.querySelector("h3");
-        historyContainer.innerHTML = "";
-        if (header) historyContainer.appendChild(header);
-
-        if (bookings.length === 0) {
-            historyContainer.innerHTML += "<p>No job history found.</p>";
-            return;
-        }
-
-        bookings.forEach(job => {
-            const card = document.createElement("div");
-            card.className = "job-card";
-            card.innerHTML = `
-                <div class="job-header">
-                    <div>
-                        <h4>Customer #${job.customer_id}</h4>
-                        <p class="job-type">Service ID: ${job.service_id}</p>
-                    </div>
-                    <span class="status ${job.status}">${job.status}</span>
-                </div>
-                <p class="job-info">📍 ${job.address}</p>
-                <p class="job-info">🕒 ${new Date(job.date_time).toLocaleString()}</p>
-                <p class="job-info"><strong>💰 Price:</strong> $${job.price}</p>
-                ${job.latitude ? `<a href="https://www.google.com/maps?q=${job.latitude},${job.longitude}" target="_blank" style="color:#007bff; text-decoration:none;">🗺️ Map</a>` : ''}
-            `;
-            historyContainer.appendChild(card);
-        });
-
-    } catch (e) {
-        console.error("Error loading history", e);
-        historyContainer.innerHTML += "<p>Error loading data.</p>";
-    }
-}
-
-// Auto-run if on the history page
-if (document.querySelector(".jobs")) {
-    document.addEventListener("DOMContentLoaded", loadVendorHistory);
-}

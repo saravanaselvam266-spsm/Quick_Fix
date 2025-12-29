@@ -51,10 +51,10 @@
         </div>
 
         <!-- STEP 2: PAYMENT METHOD -->
-        <div id="step-2" class="wizard-step" style="display: none;">
+        <div id="step-2" class="wizard-step">
             <h2>Payment Method</h2>
             <p>How would you like to pay?</p>
-            <div class="payment-options" style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <div class="payment-options">
                 <button type="button" class="pay-btn" onclick="selectPayment('Cash')">💵 Cash</button>
                 <button type="button" class="pay-btn" onclick="selectPayment('Card')">💳 Card</button>
                 <button type="button" class="pay-btn" onclick="selectPayment('UPI')">📱 UPI</button>
@@ -63,17 +63,17 @@
         </div>
 
         <!-- STEP 3: LOCATION -->
-        <div id="step-3" class="wizard-step" style="display: none;">
+        <div id="step-3" class="wizard-step">
             <h2>Enter Location</h2>
             <p>Where should the mechanic come?</p>
             
-            <label for="address">Address / Landmark</label>
-            <input type="text" id="address" placeholder="e.g. 123 Main St" required>
+            <label for="address">Address / Landmark</label><br/>
+            <input type="text" id="address" placeholder="e.g. 123 Main St" required><br/>
             
-            <button type="button" onclick="detectLocation()" style="background-color: #28a745; margin-bottom: 10px;">📍 Use My Current Location</button>
+            <button type="button" onclick="detectLocation()" class="locate-btn">📍 Use My Current Location</button>
             
             <div style="margin-top: 20px;">
-                <button type="button" class="back-btn" onclick="showStep(2)">Back</button>
+                <button type="button" class="back-btn" onclick="showStep(2)">Back</button><br/>
                 <button type="button" class="continue-btn" onclick="finalSubmitBooking()">✅ Confirm Booking</button>
             </div>
         </div>
