@@ -40,10 +40,22 @@ async function loadMechanicDashboard() {
     const radius = 50;
 
     try {
+        if (!user.access_token) {
+            console.warn("No token found");
+        }
+
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${user.access_token}`
+            }
+        };
+
         // 0. Fetch Helper Data (Services, Users) First
         const [serviceRes, userRes] = await Promise.all([
-            fetch(`${API_BASE_URL}/services/`),
-            fetch(`${API_BASE_URL}/users/`)
+            fetch(`${API_BASE_URL}/services/`, requestOptions),
+            fetch(`${API_BASE_URL}/users/`, requestOptions)
         ]);
 
         const services = await serviceRes.json();
@@ -57,7 +69,7 @@ async function loadMechanicDashboard() {
 
 
         // 1. Fetch All Vendor Bookings (Stats & Active List)
-        const bookingRes = await fetch(`${API_BASE_URL}/bookings/vendor/${vendorId}`);
+        const bookingRes = await fetch(`${API_BASE_URL}/bookings/vendor/${vendorId}`, requestOptions);
         const allBookings = await bookingRes.json();
 
         let todayEarnings = 0;
@@ -96,7 +108,7 @@ async function loadMechanicDashboard() {
 
 
         // 2. Fetch Nearby (New) Jobs
-        const response = await fetch(`${API_BASE_URL}/bookings/nearby?lat=${myLat}&lon=${myLon}&radius=${radius}`);
+        const response = await fetch(`${API_BASE_URL}/bookings/nearby?lat=${myLat}&lon=${myLon}&radius=${radius}`, requestOptions);
         const nearbyBookings = await response.json();
 
         // 3. Render Both Lists to jobList Container
@@ -193,7 +205,10 @@ function createJobCard(booking, serviceMap, userMap, isActive) {
 async function acceptBooking(bookingId) {
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/${bookingId}/accept?vendor_id=${vendorId}`, {
-            method: "PUT"
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${user.access_token}`
+            }
         });
 
         if (response.ok) {

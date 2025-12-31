@@ -1,6 +1,7 @@
 document.querySelector(".create-btn").addEventListener("click", createCustomer);
 
-function createCustomer() {
+function createCustomer(event) {
+  event.preventDefault();
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
@@ -18,7 +19,8 @@ function createCustomer() {
     name: name,
     email: email,
     phone: phone,
-    password_hash: password,
+    phone: phone,
+    password: password, // Send as 'password', backend handles hashing
     role: "customer",
     address: address
   };
@@ -32,11 +34,11 @@ function createCustomer() {
   })
     .then((response) => response.json())
     .then((data) => {
-      if (data.error) {
-        alert(data.error);
+      if (data.error || data.detail) {
+        alert("Error: " + (data.error || data.detail));
       } else {
-        alert("Account created successfully!");
-        window.location.href = "./login.html"
+        alert("Account created successfully! Please login.");
+        window.location.href = "login.html";
       }
     })
     .catch((error) => {

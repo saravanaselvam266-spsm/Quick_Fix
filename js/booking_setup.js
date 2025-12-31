@@ -112,7 +112,12 @@ async function finalSubmitBooking() {
     bookingWizardState.address = addressInput;
 
     const user = JSON.parse(localStorage.getItem("user"));
-    const activeUser = user || { user_id: 1, name: "Demo User" };
+    if (!user || !user.access_token) {
+        alert("You must be logged in to book a service.");
+        window.location.href = "./user.login.html";
+        return;
+    }
+    const activeUser = user;
 
     const bookingData = {
         customer_id: activeUser.user_id,
@@ -130,7 +135,10 @@ async function finalSubmitBooking() {
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${activeUser.access_token}`
+            },
             body: JSON.stringify(bookingData)
         });
 
@@ -156,7 +164,11 @@ function startBookingStatusPolling(bookingId) {
 
     bookingPollInterval = setInterval(async () => {
         try {
-            const res = await fetch(`${API_BASE_URL}/bookings/${bookingId}`);
+            const res = await fetch(`${API_BASE_URL}/bookings/${bookingId}`, {
+                headers: {
+                    "Authorization": `Bearer ${JSON.parse(localStorage.getItem("user")).access_token}`
+                }
+            });
             const booking = await res.json();
 
             if (booking.status === "accepted") {

@@ -27,11 +27,23 @@ const API_BASE_URL = "http://127.0.0.1:8000";
 
 async function loadCustomerDashboard() {
   try {
+    if (!user.access_token) {
+      console.warn("No access token found. Please logout and login again.");
+    }
+
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.access_token}`
+      }
+    };
+
     // 1. Fetch data in parallel (Bookings, Services, Users)
     const [bookingRes, serviceRes, userRes] = await Promise.all([
-      fetch(`${API_BASE_URL}/bookings/user/${user.user_id}`),
-      fetch(`${API_BASE_URL}/services/`),
-      fetch(`${API_BASE_URL}/users/`)
+      fetch(`${API_BASE_URL}/bookings/user/${user.user_id}`, requestOptions),
+      fetch(`${API_BASE_URL}/services/`, requestOptions),
+      fetch(`${API_BASE_URL}/users/`, requestOptions)
     ]);
 
     const bookings = await bookingRes.json();
@@ -162,7 +174,10 @@ function markComplete(bookingId) {
 
   fetch(`http://127.0.0.1:8000/bookings/${bookingId}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.access_token}`
+    },
     body: JSON.stringify(updateData)
   })
     .then(res => res.json())

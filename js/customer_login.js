@@ -3,7 +3,8 @@ const API_BASE_URL = "http://127.0.0.1:8000";
 
 document.querySelector(".login-btn").addEventListener("click", loginUser);
 
-function loginUser() {
+function loginUser(event) {
+  event.preventDefault();
   const loginInput = document.getElementById("loginInput").value;
   const password = document.getElementById("passwordInput").value;
 
@@ -27,11 +28,11 @@ function loginUser() {
   })
     .then(response => response.json())
     .then(data => {
-      if (data.error) {
-        alert(data.error);
+      if (data.error || data.detail) {
+        alert(data.error || data.detail);
       } else {
-        // strict role check for Customer Portal
-        if (data.role === "customer") {
+        // strict role check for Customer Portal (Case Insensitive)
+        if (data.role && data.role.toLowerCase() === "customer") {
           alert("Login successful");
           // save user info
           localStorage.setItem("user", JSON.stringify(data));
@@ -41,7 +42,8 @@ function loginUser() {
           alert("Access Denied: You are trying to login as a Vendor on the Customer Portal. Please use the Vendor Login page.");
           window.location.href = "./ven.login.html";
         } else {
-          alert("Login failed: Unauthorized role.");
+          console.log("Role mismatch. Expected 'customer', got:", data.role);
+          alert("Login successful but Access Denied.\n\nYour account role is: '" + data.role + "'.\nPlease use the correct portal.");
         }
       }
     })

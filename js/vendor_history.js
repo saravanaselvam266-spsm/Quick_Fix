@@ -33,10 +33,19 @@ async function loadVendorHistory() {
     try {
         // 1. Fetch Helper Data (Services, Users) & All Bookings
         // Using Promise.all for parallel fetching
+        // JWT Proccesing 
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${user.access_token}`
+            }
+        };
+
         const [serviceRes, userRes, bookingRes] = await Promise.all([
-            fetch(`${API_BASE_URL}/services/`),
-            fetch(`${API_BASE_URL}/users/`),
-            fetch(`${API_BASE_URL}/bookings/vendor/${vendorId}`)
+            fetch(`${API_BASE_URL}/services/`, requestOptions),
+            fetch(`${API_BASE_URL}/users/`, requestOptions),
+            fetch(`${API_BASE_URL}/bookings/vendor/${vendorId}`, requestOptions)
         ]);
 
         const services = await serviceRes.json();

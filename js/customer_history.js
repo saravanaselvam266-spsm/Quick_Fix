@@ -26,10 +26,18 @@ if (document.querySelector("h1")) document.querySelector("h1").innerText = `Welc
 async function loadCustomerHistory() {
   try {
     // 1. Fetch Data in Parallel
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.access_token}`
+      }
+    };
+
     const [bookingRes, serviceRes, userRes] = await Promise.all([
-      fetch(`${API_BASE_URL}/bookings/user/${user.user_id}`),
-      fetch(`${API_BASE_URL}/services/`),
-      fetch(`${API_BASE_URL}/users/`)
+      fetch(`${API_BASE_URL}/bookings/user/${user.user_id}`, requestOptions),
+      fetch(`${API_BASE_URL}/services/`, requestOptions),
+      fetch(`${API_BASE_URL}/users/`, requestOptions)
     ]);
 
     const bookings = await bookingRes.json();
