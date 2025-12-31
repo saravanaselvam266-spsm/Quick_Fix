@@ -1,9 +1,11 @@
 
 const API_BASE_URL = "http://127.0.0.1:8000";
 
-document.querySelector(".login-btn").addEventListener("click", loginVendor);
+document.querySelector(".login-btn").addEventListener("click", loginAdmin);
 
-function loginVendor() {
+function loginAdmin(event) {
+    event.preventDefault();
+
     const loginInput = document.getElementById("loginInput").value;
     const password = document.getElementById("passwordInput").value;
 
@@ -27,28 +29,17 @@ function loginVendor() {
     })
         .then(response => response.json())
         .then(data => {
-            // Check for backend error
-            if (data.detail || data.error) {
-                alert(data.detail || data.error);
+            if (data.error || data.detail) {
+                alert(data.error || data.detail);
             } else {
-
-                // Strict Role Check for Vendor Portal
-                if (data.role === "vendor" || data.role === "mechanic") {
+                // Strict Role Check for Admin
+                if (data.role === "admin") {
                     alert("Login successful");
-
                     // Save user info
                     localStorage.setItem("user", JSON.stringify(data));
-
-                    // Redirect to Vendor Dashboard
-                    window.location.href = "./ven.db1.html";
-
-                } else if (data.role === "customer" || data.role === "admin") {
-                    // If a Customer or Admin tries to log in on the Vendor page
-                    const roleName = data.role === "admin" ? "Admin" : "Customer";
-                    alert(`Access Denied: You are trying to login as a ${roleName} on the Vendor Portal.`);
-                    window.location.href = "./user.login.html";
+                    window.location.href = "./admin_dashboard.html";
                 } else {
-                    alert("Login failed: Unauthorized role.");
+                    alert("Access Denied: You are not an admin. Your role is: " + data.role);
                 }
             }
         })

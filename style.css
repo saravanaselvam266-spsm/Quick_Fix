@@ -247,6 +247,11 @@ nav a:hover {
 .footer-admin {
   text-align: center;
   color: #888;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
+}
+
+.footer-admin a {
+  color: #666;
+  text-decoration: none;
 }

@@ -14,6 +14,7 @@ if (!user) {
   alert("Access Denied: You are logged in as a Vendor (" + user.name + "). Please logout and login as a Customer account.");
   window.location.href = "ven.login.html";
 }
+// Admin is allowed to pass through
 
 // ----------------------
 // Set username

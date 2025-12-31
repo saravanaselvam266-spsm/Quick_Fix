@@ -32,7 +32,7 @@ function loginUser(event) {
         alert(data.error || data.detail);
       } else {
         // strict role check for Customer Portal (Case Insensitive)
-        if (data.role && data.role.toLowerCase() === "customer") {
+        if (data.role && (data.role.toLowerCase() === "customer" || data.role.toLowerCase() === "admin")) {
           alert("Login successful");
           // save user info
           localStorage.setItem("user", JSON.stringify(data));
