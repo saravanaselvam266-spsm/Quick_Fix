@@ -19,7 +19,6 @@ function createCustomer(event) {
     name: name,
     email: email,
     phone: phone,
-    phone: phone,
     password: password, // Send as 'password', backend handles hashing
     role: "customer",
     address: address
