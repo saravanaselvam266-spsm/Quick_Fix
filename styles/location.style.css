@@ -142,6 +142,13 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
+.wizard-step {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
 /* Payment Options */
 .payment-options {
   display: flex;
