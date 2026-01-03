@@ -255,3 +255,104 @@ nav a:hover {
   color: #666;
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+
+  /* Header */
+  header {
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .auth {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-bottom: 20px;
+  }
+
+  .hero-img img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Steps Section */
+  .steps-section {
+    height: auto;
+    padding: 30px 20px;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .step {
+    width: 100%;
+  }
+
+  /* Services */
+  .services-section {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .service-cards {
+    flex-direction: column;
+    gap: 30px;
+    height: auto;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .card div {
+    margin-top: 30px;
+  }
+
+  .card-btn {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-text {
+    max-width: 100%;
+  }
+
+  .footer-copy,
+  .footer-admin {
+    font-size: 14px;
+  }
+}
