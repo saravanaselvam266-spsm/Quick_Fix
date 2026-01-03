@@ -2,7 +2,7 @@
 // VENDOR DASHBOARD LOGIC
 // ==========================================
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+
 
 // Get logged-in user
 const user = JSON.parse(localStorage.getItem("user"));

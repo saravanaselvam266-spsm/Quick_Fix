@@ -2,7 +2,6 @@
 // CLIENT SIDE: BOOKING LOGIC
 // ==========================================
 
-const API_BASE_URL = "http://127.0.0.1:8000";
 
 // Global variable to stop polling if needed
 let bookingPollInterval = null;

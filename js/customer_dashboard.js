@@ -25,7 +25,7 @@ document.getElementById("userName").innerText = user.name;
 // --------------------
 // Load user bookings & Calculate Stats
 // --------------------
-const API_BASE_URL = "http://127.0.0.1:8000";
+
 
 async function loadCustomerDashboard() {
   try {

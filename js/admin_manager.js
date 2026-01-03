@@ -1,11 +1,11 @@
-const API_URL = "http://127.0.0.1:8000";
+
 
 // Load services on page load
 document.addEventListener('DOMContentLoaded', loadServices);
 
 async function loadServices() {
     try {
-        const response = await fetch(`${API_URL}/services/`);
+        const response = await fetch(`${API_BASE_URL}/services/`);
         const services = await response.json();
 
         const tbody = document.getElementById('serviceList');
@@ -42,7 +42,7 @@ async function updatePrice(serviceId) {
 
     try {
         // 1. Get current details
-        const getRes = await fetch(`${API_URL}/services/${serviceId}`);
+        const getRes = await fetch(`${API_BASE_URL}/services/${serviceId}`);
         const serviceData = await getRes.json();
 
         if (!serviceData) {
@@ -54,7 +54,7 @@ async function updatePrice(serviceId) {
         serviceData.base_price = parseFloat(newPrice);
 
         // 3. Send update
-        const response = await fetch(`${API_URL}/services/${serviceId}`, {
+        const response = await fetch(`${API_BASE_URL}/services/${serviceId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ async function createService() {
     };
 
     try {
-        const response = await fetch(`${API_URL}/services/`, {
+        const response = await fetch(`${API_BASE_URL}/services/`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newService)

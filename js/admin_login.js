@@ -1,6 +1,4 @@
 
-const API_BASE_URL = "http://127.0.0.1:8000";
-
 document.querySelector(".login-btn").addEventListener("click", loginAdmin);
 
 function loginAdmin(event) {

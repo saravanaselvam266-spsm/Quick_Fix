@@ -45,7 +45,7 @@ function vendorSignup(event) {
   };
 
   // send data to backend
-  fetch("http://127.0.0.1:8000/users/vendors", {
+  fetch(`${API_BASE_URL}/users/vendors`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

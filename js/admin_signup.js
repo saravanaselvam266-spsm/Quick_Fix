@@ -21,7 +21,7 @@ function createAdmin(event) {
         // address is optional for admin, not included in form
     };
 
-    fetch("http://127.0.0.1:8000/users/admins", {
+    fetch(`${API_BASE_URL}/users/admins`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
