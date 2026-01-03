@@ -81,7 +81,7 @@ nav a:hover {
 }
 
 .hero-img img {
-  width: 500px;
+  width: 400px;
   border-radius: 10px;
 }
 
@@ -98,6 +98,7 @@ nav a:hover {
 .book-now a {
   text-decoration: none;
   color: white;
+
 }
 
 /* Steps Section */
@@ -128,7 +129,7 @@ nav a:hover {
 .services-section {
   text-align: center;
   padding: 60px;
-  height: 500px;
+  height: 550px;
 }
 
 .service-cards {
@@ -141,9 +142,9 @@ nav a:hover {
 
 .card {
   background: white;
-  height: 300px;
+  height: 325px;
   width: 320px;
-  padding: 25px;
+  padding: 5px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -256,20 +257,26 @@ nav a:hover {
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+
+  /* General */
+  body {
+    overflow-x: hidden;
+  }
 
   /* Header */
   header {
     flex-direction: column;
-    padding: 15px 20px;
+    padding: 12px 16px;
     gap: 10px;
+    text-align: center;
   }
 
   nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .auth {
@@ -281,28 +288,33 @@ nav a:hover {
   .hero {
     flex-direction: column;
     height: auto;
-    padding: 30px 20px;
+    padding: 30px 16px;
     text-align: center;
   }
 
   .hero-text {
-    margin-bottom: 20px;
+    width: 100%;
   }
 
   .hero-img img {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    margin-top: 30px;
+  }
+
+  .book-now {
+    margin-bottom: 10px;
   }
 
   /* Steps Section */
   .steps-section {
+    padding: 30px 16px;
     height: auto;
-    padding: 30px 20px;
   }
 
   .steps {
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
     margin-top: 40px;
   }
 
@@ -310,27 +322,27 @@ nav a:hover {
     width: 100%;
   }
 
-  /* Services */
+  /* Services Section */
   .services-section {
+    padding: 40px 16px;
     height: auto;
-    padding: 40px 20px;
   }
 
   .service-cards {
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
     height: auto;
   }
 
   .card {
     width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    max-width: 320px;
     height: auto;
+    margin: 0 auto;
   }
 
   .card div {
-    margin-top: 30px;
+    margin-top: 24px;
   }
 
   .card-btn {
@@ -339,12 +351,12 @@ nav a:hover {
 
   /* Footer */
   .footer {
-    padding: 30px 20px;
+    padding: 30px 16px;
   }
 
   .footer-content {
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
   }
 
   .footer-text {
@@ -354,5 +366,41 @@ nav a:hover {
   .footer-copy,
   .footer-admin {
     font-size: 14px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+
+  .hero {
+    width: 100%;
+    padding: 30px 16px;
+    text-align: center;
+  }
+
+  .hero-img img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  header,
+  .steps-section,
+  .services-section,
+  .footer {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
