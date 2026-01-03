@@ -37,7 +37,7 @@ function vendorSignup(event) {
     name: name,
     email: email,
     phone: phone,
-    password_hash: password,
+    password: password,
     address: address,
     specialty: specialties.join(", "),
     experience_years: Number(experience),
