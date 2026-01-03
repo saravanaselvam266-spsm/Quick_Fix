@@ -142,13 +142,6 @@ nav a:hover {
   margin-bottom: 20px;
 }
 
-.wizard-step {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
 /* Payment Options */
 .payment-options {
   display: flex;
@@ -160,8 +153,6 @@ nav a:hover {
 .payment-options button {
   padding: 10px;
   border-radius: 5px;
-
-
 }
 
 .payment-options button:hover {
@@ -184,7 +175,7 @@ nav a:hover {
 /* Input Fields */
 input[type="text"] {
   width: 100%; /* Changed from fixed 500px to responsive */
-  max-width: 500px; 
+  max-width: 500px;
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #ddd;
@@ -206,14 +197,13 @@ input[type="text"] {
   padding: 15px;
   background-color: rgb(108, 232, 83);
   border-radius: 10px;
-
 }
 
 /* Helper for detected location button */
 .locate-btn {
   width: 100%;
   max-width: 500px;
-  background-color: #28a745; 
+  background-color: #28a745;
   margin-bottom: 10px;
   color: white;
   border: none;
@@ -226,7 +216,6 @@ input[type="text"] {
 button[onclick="detectLocation()"] {
   width: 100%;
   max-width: 500px;
-
 }
 
 #step-2 {
@@ -236,17 +225,12 @@ button[onclick="detectLocation()"] {
 }
 
 #step-3 {
-   display: none;
+  display: none;
   position: relative;
   bottom: 400px;
-
 }
 .payment-options {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
-
-
-
-
