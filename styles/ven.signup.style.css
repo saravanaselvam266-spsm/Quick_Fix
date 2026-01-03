@@ -173,3 +173,40 @@ input[type="number"] {
 .switch a:hover {
   text-decoration: underline;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  main {
+    padding: 20px 0;
+    margin: 20px 0;
+    height: auto;
+  }
+
+  .form-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -257,150 +257,65 @@ nav a:hover {
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
-
-  /* General */
-  body {
-    overflow-x: hidden;
-  }
-
-  /* Header */
+/* Responsive Design */
+@media (max-width: 768px) {
   header {
     flex-direction: column;
-    padding: 12px 16px;
-    gap: 10px;
-    text-align: center;
+    padding: 15px 20px;
+    gap: 15px;
   }
 
   nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .auth {
-    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
-  /* Hero Section */
   .hero {
     flex-direction: column;
+    padding: 40px 20px;
     height: auto;
-    padding: 30px 16px;
     text-align: center;
-  }
-
-  .hero-text {
-    width: 100%;
   }
 
   .hero-img img {
     width: 100%;
-    max-width: 280px;
     margin-top: 30px;
   }
 
-  .book-now {
-    margin-bottom: 10px;
-  }
-
-  /* Steps Section */
-  .steps-section {
-    padding: 30px 16px;
+  .steps-section,
+  .services-section {
+    padding: 40px 20px;
     height: auto;
   }
 
   .steps {
     flex-direction: column;
-    gap: 32px;
+    align-items: center;
+    gap: 40px;
     margin-top: 40px;
-  }
-
-  .step {
-    width: 100%;
-  }
-
-  /* Services Section */
-  .services-section {
-    padding: 40px 16px;
-    height: auto;
   }
 
   .service-cards {
     flex-direction: column;
-    gap: 24px;
+    align-items: center;
+    gap: 30px;
     height: auto;
+    margin-top: 0;
   }
 
   .card {
     width: 100%;
     max-width: 320px;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  .card div {
-    margin-top: 24px;
-  }
-
-  .card-btn {
-    width: 100%;
-  }
-
-  /* Footer */
-  .footer {
-    padding: 30px 16px;
   }
 
   .footer-content {
     flex-direction: column;
-    gap: 24px;
+    gap: 40px;
   }
 
-  .footer-text {
-    max-width: 100%;
-  }
-
-  .footer-copy,
-  .footer-admin {
-    font-size: 14px;
-  }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-@media (max-width: 768px) {
-
-  .hero {
-    width: 100%;
-    padding: 30px 16px;
-    text-align: center;
-  }
-
-  .hero-img img {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    margin: 0 auto;
-    display: block;
-  }
-
-  header,
-  .steps-section,
-  .services-section,
   .footer {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 40px 20px;
   }
 }

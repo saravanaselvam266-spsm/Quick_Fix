@@ -234,3 +234,57 @@ button[onclick="detectLocation()"] {
   gap: 10px;
   margin-bottom: 20px;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .steps {
+    gap: 10px;
+  }
+
+  .line {
+    width: 30px;
+  }
+
+  .labels {
+    gap: 20px;
+    font-size: 12px;
+  }
+
+  .form-box {
+    width: 90%;
+    min-height: auto;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .payment-options {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .payment-options button {
+    width: 100%;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
