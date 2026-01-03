@@ -174,7 +174,7 @@ function markComplete(bookingId) {
     longitude: booking.longitude
   };
 
-  fetch(`http://127.0.0.1:8000/bookings/${bookingId}`, {
+  fetch(`${API_BASE_URL}/bookings/${bookingId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
