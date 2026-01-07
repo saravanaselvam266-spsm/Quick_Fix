@@ -22,7 +22,7 @@ async function loadServices() {
                 </td>
                 <td>
                     <button onclick="updatePrice(${service.service_id})">Update Price</button>
-                    <!-- <button onclick="deleteService(${service.service_id})" style="background-color: #dc3545;">Delete</button> -->
+                    <button onclick="deleteService(${service.service_id})" style="background-color: #dc3545;">Delete</button> 
                 </td>
             `;
             tbody.appendChild(tr);
@@ -74,6 +74,33 @@ async function updatePrice(serviceId) {
         alert('Error updating price.');
     }
 }
+
+async function deleteService(serviceId) {
+    // Ask confirmation before deleting
+    const confirmDelete = confirm("Are you sure you want to delete this service?");
+
+    if (!confirmDelete) {
+        return; // Stop if user cancels
+    }
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/services/${serviceId}`, {
+            method: "DELETE"
+        });
+
+        if (response.ok) {
+            alert("Service deleted successfully!");
+            loadServices(); // Refresh the table
+        } else {
+            const err = await response.json();
+            alert("Failed to delete service: " + JSON.stringify(err));
+        }
+    } catch (error) {
+        console.error("Error deleting service:", error);
+        alert("Error connecting to server.");
+    }
+}
+
 async function createService() {
     const name = document.getElementById("newServiceName").value;
     const desc = document.getElementById("newServiceDesc").value;
