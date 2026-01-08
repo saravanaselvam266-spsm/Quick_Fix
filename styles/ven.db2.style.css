@@ -119,7 +119,7 @@ nav a.active {
   background: #e9ebf1;
   border-radius: 20px;
   overflow: hidden;
-  width: 1400px;
+  width: 1370px;
   margin-bottom: 20px;
 }
 .tab {
@@ -221,4 +221,3 @@ nav a.active {
     overflow-x: auto;
   }
 }
-

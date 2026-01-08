@@ -105,7 +105,7 @@ nav a {
   background: #e9ebf1;
   border-radius: 20px;
   overflow: hidden;
-  width: 1400px;
+  width: 1370px;
   margin-bottom: 20px;
 }
 .tab {
@@ -130,6 +130,10 @@ nav a {
 .tabs .tab.active {
   background-color: rgb(177, 173, 173);
   border-radius: 20px;
+}
+
+.active-1 {
+  color :#007bff
 }
 
 /* Booking Section */

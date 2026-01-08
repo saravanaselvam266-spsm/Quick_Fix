@@ -34,6 +34,10 @@ nav a {
   color: #007bff;
 } */
 
+.active-1 {
+  color :#007bff
+}
+
 .nav-buttons button {
   margin-left: 10px;
   padding: 6px 15px;
@@ -113,7 +117,7 @@ nav a {
   background: #ebecf0;
   border-radius: 20px;
   overflow: hidden;
-  width: 1400px;
+  width: 1370px;
   margin-bottom: 20px;
 }
 
