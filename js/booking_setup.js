@@ -54,7 +54,7 @@ async function loadServicesForWizard() {
             btn.style.borderRadius = "8px";
             btn.style.backgroundColor = "white";
             btn.style.cursor = "pointer";
-            btn.innerHTML = `<strong>${s.service_name}</strong> - $${s.base_price}<br><small>${s.description}</small>`;
+            btn.innerHTML = `<strong>${s.service_name}</strong> - ₹${s.base_price}<br><small>${s.description}</small>`;
             btn.onclick = () => selectService(s.service_id, s.base_price);
             list.appendChild(btn);
         });
@@ -113,7 +113,7 @@ async function finalSubmitBooking() {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user || !user.access_token) {
         alert("You must be logged in to book a service.");
-        window.location.href = "./user.login.html";
+        window.location.href ="./login.html";
         return;
     }
     const activeUser = user;
