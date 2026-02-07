@@ -194,7 +194,7 @@ function createJobCard(booking, serviceMap, userMap, isActive) {
                 <h3 style="margin:0 0 5px 0;">${serviceName}</h3> 
                 <p style="margin:0 0 10px 0; color:#666;">Customer: ${customerName}</p>
                 <p style="margin:5px 0;"><strong>📍 Loc:</strong> ${booking.address}</p>
-                <p style="margin:5px 0;"><strong>💰 Price:</strong> $${booking.price}</p>
+                <p style="margin:5px 0;"><strong>💰 Price:</strong> ₹${booking.price}</p>
                 <a href="https://www.google.com/maps?q=${booking.latitude},${booking.longitude}" target="_blank" 
                    style="display:inline-block; margin-top:5px; color:#007bff; text-decoration:none; font-size:14px;  padding: 8px; border-radius:10px; background-color: #2e5fdaff; color:white;" >
                    View Location
