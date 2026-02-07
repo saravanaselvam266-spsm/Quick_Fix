@@ -84,7 +84,14 @@ async function loadMechanicDashboard() {
             const bookingDate = new Date(b.date_time).toISOString().split('T')[0];
 
             if (b.status === "completed") {
-                if (bookingDate === todayDate) {
+                // Fix: Compare dates properly (ignoring time)
+                const bookingDateObj = new Date(b.date_time);
+                const todayObj = new Date();
+                
+                if (bookingDateObj.getDate() === todayObj.getDate() &&
+                    bookingDateObj.getMonth() === todayObj.getMonth() &&
+                    bookingDateObj.getFullYear() === todayObj.getFullYear()) {
+                    
                     todayEarnings += b.price;
                     completedTodayCount++;
                 }
@@ -172,7 +179,7 @@ function createJobCard(booking, serviceMap, userMap, isActive) {
     let actionBtn = "";
     if (!isActive) {
         actionBtn = `
-            <button onclick="acceptBooking(${booking.booking_id})" 
+            <button onclick="acceptBooking(${booking.booking_id}, this)" 
                 class="accept-btn"
                 style="background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight:bold;">
                 Accept Job
@@ -202,7 +209,9 @@ function createJobCard(booking, serviceMap, userMap, isActive) {
 // ------------------------------------------
 // Function to accept a booking
 // ------------------------------------------
-async function acceptBooking(bookingId) {
+async function acceptBooking(bookingId, btnElement) {
+    if (btnElement) toggleLoading(btnElement, true);
+
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/${bookingId}/accept?vendor_id=${vendorId}`, {
             method: "PUT",
@@ -216,10 +225,12 @@ async function acceptBooking(bookingId) {
             // Refresh the dashboard to remove the accepted job from the list
             loadMechanicDashboard();
         } else {
+            if (btnElement) toggleLoading(btnElement, false);
             const err = await response.json();
             alert("Error: " + (err.detail || "Could not accept booking"));
         }
     } catch (error) {
+        if (btnElement) toggleLoading(btnElement, false);
         console.error("Accept failed:", error);
         alert("Something went wrong.");
     }

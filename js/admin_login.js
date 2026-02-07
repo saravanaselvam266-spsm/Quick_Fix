@@ -6,12 +6,15 @@ function loginAdmin(event) {
 
     const loginInput = document.getElementById("loginInput").value;
     const password = document.getElementById("passwordInput").value;
+    const submitBtn = document.querySelector(".login-btn");
 
     // basic validation
     if (!loginInput || !password) {
         alert("Please enter email/phone and password");
         return;
     }
+
+    toggleLoading(submitBtn, true);
 
     const loginData = {
         username: loginInput,
@@ -27,6 +30,7 @@ function loginAdmin(event) {
     })
         .then(response => response.json())
         .then(data => {
+            toggleLoading(submitBtn, false);
             if (data.error || data.detail) {
                 alert(data.error || data.detail);
             } else {
@@ -42,6 +46,7 @@ function loginAdmin(event) {
             }
         })
         .catch(error => {
+            toggleLoading(submitBtn, false);
             console.error("Error:", error);
             alert("Login failed: " + error.message);
         });

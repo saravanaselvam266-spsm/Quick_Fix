@@ -117,7 +117,7 @@ async function loadCustomerDashboard() {
       // Logic for Complete Button
       let actionButton = "";
       if (b.status === "accepted" || b.status === "in_progress") {
-        actionButton = `<button class="complete-btn" onclick="markComplete(${b.booking_id})">✅ Mark Complete</button>`;
+        actionButton = `<button class="complete-btn" onclick="markComplete(${b.booking_id}, this)">✅ Mark Complete</button>`;
       }
 
       card.innerHTML = `
@@ -153,13 +153,15 @@ loadCustomerDashboard();
 // --------------------
 // Mark Booking as Complete
 // --------------------
-function markComplete(bookingId) {
+function markComplete(bookingId, btnElement) {
   // Find the booking object
   const booking = window.allBookings.find(b => b.booking_id === bookingId);
   if (!booking) return;
 
   const confirmComplete = confirm("Are you sure this service is completed?");
   if (!confirmComplete) return;
+
+  if (btnElement) toggleLoading(btnElement, true);
 
   // Prepare data for update (Backened expects full object)
   const updateData = {
@@ -184,10 +186,15 @@ function markComplete(bookingId) {
   })
     .then(res => res.json())
     .then(data => {
+      // No need to untoggle since we reload
       alert("Service marked as Completed!");
       location.reload(); // Refresh to update lists
     })
-    .catch(err => console.error("Error completing booking:", err));
+    .catch(err => {
+      console.error("Error completing booking:", err);
+      if (btnElement) toggleLoading(btnElement, false);
+      alert("Failed to mark as complete");
+    });
 }
 
 // --------------------

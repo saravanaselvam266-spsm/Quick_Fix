@@ -6,12 +6,15 @@ document.querySelector(".login-btn").addEventListener("click", loginVendor);
 function loginVendor() {
     const loginInput = document.getElementById("loginInput").value;
     const password = document.getElementById("passwordInput").value;
+    const submitBtn = document.querySelector(".login-btn");
 
     // basic validation
     if (!loginInput || !password) {
         alert("Please enter email/phone and password");
         return;
     }
+
+    toggleLoading(submitBtn, true);
 
     const loginData = {
         username: loginInput,
@@ -27,6 +30,7 @@ function loginVendor() {
     })
         .then(response => response.json())
         .then(data => {
+            toggleLoading(submitBtn, false);
             // Check for backend error
             if (data.detail || data.error) {
                 alert(data.detail || data.error);
@@ -53,6 +57,7 @@ function loginVendor() {
             }
         })
         .catch(error => {
+            toggleLoading(submitBtn, false);
             console.error("Error:", error);
             alert("Login failed: " + error.message);
         });

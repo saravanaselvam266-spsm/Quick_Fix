@@ -17,6 +17,7 @@ function vendorSignup(event) {
     ", " +
     document.getElementById("state").value;
   const password = document.getElementById("password").value;
+  const submitBtn = document.querySelector(".submit-btn");
 
   // get selected specialties
   const checkedBoxes = document.querySelectorAll(".specialty:checked");
@@ -31,6 +32,8 @@ function vendorSignup(event) {
     alert("Please fill all required fields");
     return;
   }
+
+  toggleLoading(submitBtn, true);
 
   // create data object
   const vendorData = {
@@ -54,6 +57,7 @@ function vendorSignup(event) {
   })
     .then(response => response.json())
     .then(data => {
+      toggleLoading(submitBtn, false);
       if (data.error) {
         alert(data.error);
       } else {
@@ -62,6 +66,7 @@ function vendorSignup(event) {
       }
     })
     .catch(error => {
+      toggleLoading(submitBtn, false);
       console.error(error);
       alert("Sign up failed: " + error.message);
     });

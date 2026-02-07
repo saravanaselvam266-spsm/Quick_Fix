@@ -7,12 +7,15 @@ function loginUser(event) {
   event.preventDefault();
   const loginInput = document.getElementById("loginInput").value;
   const password = document.getElementById("passwordInput").value;
+  const submitBtn = document.querySelector(".login-btn");
 
   // basic validation
   if (!loginInput || !password) {
     alert("Please enter email/phone and password");
     return;
   }
+
+  toggleLoading(submitBtn, true);
 
   const loginData = {
     username: loginInput,
@@ -28,11 +31,12 @@ function loginUser(event) {
   })
     .then(response => response.json())
     .then(data => {
+      toggleLoading(submitBtn, false);
       if (data.error || data.detail) {
         alert(data.error || data.detail);
       } else {
         // strict role check for Customer Portal (Case Insensitive)
-        if (data.role && (data.role.toLowerCase() === "customer" || data.role.toLowerCase() === "admin")) {
+        if (data.role && (data.role.toLowerCase() === "customer" || data.role.toLowerCase() === "admin")) { // allowed admin to login here too if needed
           alert("Login successful");
           // save user info
           localStorage.setItem("user", JSON.stringify(data));
@@ -48,6 +52,7 @@ function loginUser(event) {
       }
     })
     .catch(error => {
+      toggleLoading(submitBtn, false);
       console.error("Error:", error);
       alert("Login failed: " + error.message);
     });

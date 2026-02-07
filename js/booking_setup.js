@@ -104,6 +104,8 @@ async function detectLocation() {
 
 async function finalSubmitBooking() {
     const addressInput = document.getElementById("address").value;
+    const submitBtn = document.querySelector(".continue-btn");
+
     if (!addressInput) {
         alert("Please enter an address or detect location.");
         return;
@@ -131,6 +133,8 @@ async function finalSubmitBooking() {
         // could add payment method to DB model if needed, but not in current schema
     };
 
+    toggleLoading(submitBtn, true);
+
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/`, {
             method: "POST",
@@ -143,15 +147,19 @@ async function finalSubmitBooking() {
 
         if (response.ok) {
             const result = await response.json();
+            // Don't remove loading if we are navigating away, but alerts block execution so...
+            toggleLoading(submitBtn, false);
             alert(`Booking Confirmed! ID: ${result.booking_id}\nPayment: ${bookingWizardState.payment_method}`);
             startBookingStatusPolling(result.booking_id);
             // Maybe redirect to dashboard?
             window.location.href = "user.db1.html";
         } else {
+            toggleLoading(submitBtn, false);
             const err = await response.json();
             alert("Error: " + JSON.stringify(err));
         }
     } catch (e) {
+        toggleLoading(submitBtn, false);
         console.error(e);
         alert("Booking failed");
     }

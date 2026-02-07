@@ -7,11 +7,14 @@ function createAdmin(event) {
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
     const password = document.getElementById("password").value;
+    const submitBtn = document.querySelector(".create-btn");
 
     if (!name || !email || !phone || !password) {
         alert("Please fill all required fields");
         return;
     }
+
+    toggleLoading(submitBtn, true);
 
     const userData = {
         name: name,
@@ -30,6 +33,7 @@ function createAdmin(event) {
     })
         .then((response) => response.json())
         .then((data) => {
+            toggleLoading(submitBtn, false);
             if (data.error || data.detail) {
                 alert("Error: " + (data.error || data.detail));
             } else {
@@ -38,6 +42,7 @@ function createAdmin(event) {
             }
         })
         .catch((error) => {
+            toggleLoading(submitBtn, false);
             console.error("Error:", error);
             alert("Sign up failed: " + error.message);
         });

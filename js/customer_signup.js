@@ -9,11 +9,14 @@ function createCustomer(event) {
   const address = document.getElementById("address").value +
     ", " + document.getElementById("city").value +
     ", " + document.getElementById("state").value;
+  const submitBtn = document.querySelector(".create-btn");
 
   if (!name || !email || !phone || !password) {
     alert("Please fill all required fields");
     return;
   }
+
+  toggleLoading(submitBtn, true);
 
   const userData = {
     name: name,
@@ -33,6 +36,7 @@ function createCustomer(event) {
   })
     .then((response) => response.json())
     .then((data) => {
+      toggleLoading(submitBtn, false);
       if (data.error || data.detail) {
         alert("Error: " + (data.error || data.detail));
       } else {
@@ -41,6 +45,7 @@ function createCustomer(event) {
       }
     })
     .catch((error) => {
+      toggleLoading(submitBtn, false);
       console.error("Error:", error);
       alert("Sign up failed: " + error.message);
     });
