@@ -129,7 +129,7 @@ async function loadVendorHistory() {
                 </div>
                 <p class="job-info">📍 ${job.address}</p>
                 <p class="job-info">🕒 ${new Date(job.date_time).toLocaleString()}</p>
-                <p class="job-info"><strong>💰 Price:</strong> $${job.price}</p>
+                <p class="job-info"><strong>💰 Price:</strong> ₹${job.price}</p>
             `;
             historyContainer.appendChild(card);
         });
