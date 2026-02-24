@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,16 +12,18 @@
       <div class="logo">
         <a>Quick<span>Fix</span></a>
       </div>
-      <nav>
+      <nav id="main-nav">
         <a href="#">Home</a>
         <a href="#Our Services">Services</a>
         <a href="#How It Works">How It Works</a>
+        <!-- Dynamic Dashboard Link will appear here -->
       </nav>
-      <div class="auth">
-        <a href="./pages/login.html">Login</a>
-        <a href="./pages/signup.html"
+      <div class="auth" id="auth-section">
+        <a href="./pages/login.html" id="login-link">Login</a>
+        <a href="./pages/signup.html" id="signup-link"
           ><button class="signup">Sign Up</button></a
         >
+        <!-- Dynamic Logout Button will appear here -->
       </div>
     </header>
 
@@ -49,7 +51,7 @@
           <div class="icon">📅</div>
           <h3>Book a Mechanic</h3>
           <p>
-            Choose your service and schedule an appointment that fits your time
+            Facing a vehicle issue? Share your location and problem. A mechanic will reach you as soon as possible.
           </p>
         </div>
         <div class="step">
@@ -71,29 +73,9 @@
     <!-- Services -->
     <section id="Our Services" class="services-section">
       <h2>Our Services</h2>
-      <p>Professional automotive services at competitive prices</p>
+      <p>Automotive services at competitive prices</p>
 
       <div class="service-cards">
-        <div class="card">
-          <div class="icon">🏍️</div>
-          <h3>Bike Service</h3>
-          <p>Complete bike maintenance and repair</p>
-          <p>₹450</p>
-          <a href="./pages/location.html"
-            ><button class="card-btn">Book Now</button></a
-          >
-        </div>
-
-        <div class="card">
-          <div class="icon">🚗</div>
-          <h3>Car Service</h3>
-          <p>Professional car maintenance</p>
-          <p>₹1500</p>
-          <a href="./pages/location.html"
-            ><button class="card-btn">Book Now</button></a
-          >
-        </div>
-
         <div class="card">
           <div class="icon">⚡</div>
           <h3>Emergency Help</h3>
@@ -103,6 +85,27 @@
             ><button class="card-btn">Book Now</button></a
           >
         </div>
+        <div class="card">
+          <div class="icon">🏍️</div>
+          <h3>Bike Repair</h3>
+          <p>Tyre puncture & oil change</p>
+          <p>₹200</p>
+          <a href="./pages/location.html"
+            ><button class="card-btn">Book Now</button></a
+          >
+        </div>
+
+        <div class="card">
+          <div class="icon">🚗</div>
+          <h3>Car Repair</h3>
+          <p>Tyre puncture & buttery change </p>
+          <p>₹450</p>
+          <a href="./pages/location.html"
+            ><button class="card-btn">Book Now</button></a
+          >
+        </div>
+
+        
       </div>
     </section>
 
@@ -114,7 +117,7 @@
         <div class="footer-section footer-brand">
           <h2 class="footer-logo">Quick<span>Fix</span></h2>
           <p class="footer-text">
-            Professional mechanic services at your doorstep. Quick, reliable,
+            Mechanic services at your Location. Quick, reliable,
             and affordable automotive solutions.
           </p>
         </div>
@@ -134,8 +137,8 @@
         <div class="footer-section">
           <h3 class="footer-title">Contact</h3>
           <ul>
-            <li>+1 (555) 123-4567</li>
-            <li>support@quickfix.com</li>
+            <li>+91 8265477690</li>
+            <li>quickfix.support@gmail.com</li>
             <li>24/7 Customer Support</li>
           </ul>
         </div>
@@ -146,5 +149,6 @@
       <p class="footer-copy">© 2025 QuickFix. All rights reserved.</p>
       <!-- <p class="footer-admin"><a href="./pages/admin_login.html">Admin Access</a></p> -->
     </footer>
+    <script src="./js/auth_check.js"></script>
   </body>
 </html>

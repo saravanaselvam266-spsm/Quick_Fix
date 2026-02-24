@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,14 +12,30 @@
       <div class="logo">
         <a href="../index.html">Quick<span>Fix</span></a>
       </div>
-      <nav>
+      <nav id="main-nav">
         <!-- This is quick actions -->
         <a href="../index.html">Home</a>
-        <a href="services.html">Services</a>
         <a href="about.html" class="active">About</a>
         <a href="contact_us.html">Contact</a>
       </nav>
-      <!-- <button class="logout-btn">Logout</button> -->
+      <div class="auth" id="auth-section">
+        <a href="login.html" id="login-link">Login</a>
+        <a href="signup.html" id="signup-link">
+          <button
+            class="signup-btn"
+            style="
+              background: #ff8c00;
+              border: none;
+              padding: 8px 15px;
+              border-radius: 5px;
+              color: white;
+              cursor: pointer;
+            "
+          >
+            Sign Up
+          </button>
+        </a>
+      </div>
     </header>
 
     <!-- About Section -->
@@ -61,5 +77,6 @@
         </ul>
       </div>
     </section>
+    <script src="../js/auth_check.js"></script>
   </body>
 </html>
