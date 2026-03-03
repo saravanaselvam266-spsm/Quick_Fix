@@ -107,18 +107,30 @@ async function detectLocation() {
         );
         const data = await response.json();
 
-        if (data && data.display_name) {
-          // Update the input field with the actual address
-          document.getElementById("address").value = data.display_name;
+        if (data && data.address) {
+          // Extract only the parts we need from the address object
+          const addr = data.address;
+          const town = addr.town || addr.suburb || addr.village || "";
+          const city = addr.city || addr.county || addr.municipality || "";
+          const state = addr.state || "";
+          const country = addr.country || "";
+          const pincode = addr.postcode || "";
+
+          // Put them together in a clean format, skipping any empty ones
+          const cleanAddress = [town, city, state, country, pincode]
+            .filter((part) => part.trim() !== "")
+            .join(", ");
+
+          // Update the input field with our nice short address
+          document.getElementById("address").value = cleanAddress;
           btn.innerText = "✅ Location Found";
         } else {
-          // Fallback if no address found
-          document.getElementById("address").value = `Lat: ${lat}, Lon: ${lon}`;
-          btn.innerText = "✅ Coordinates Found";
+          // Fallback if no specific address components found
+          document.getElementById("address").value = data.display_name || `Lat: ${lat}, Lon: ${lon}`;
+          btn.innerText = "✅ Location Found";
         }
       } catch (error) {
         console.error("Error fetching address:", error);
-        // If the address service fails, we still show the coordinates so the user isn't stuck
         document.getElementById("address").value = `Lat: ${lat}, Lon: ${lon}`;
         btn.innerText = "✅ Coordinates Found";
       }
@@ -136,10 +148,19 @@ async function finalSubmitBooking() {
   const addressInput = document.getElementById("address").value;
   const submitBtn = document.querySelector(".continue-btn");
 
+  // --- BEGINNER VALIDATION ---
   if (!addressInput) {
     alert("Please enter an address or detect location.");
     return;
   }
+
+  // Check if the address has at least town/city, state, and pincode (approx 3 parts)
+  const addressParts = addressInput.split(",");
+  if (addressParts.length < 3) {
+    alert("Address is too short! Please include City, State, and Pincode.");
+    return;
+  }
+  // --- END VALIDATION ---
   bookingWizardState.address = addressInput;
 
   const user = JSON.parse(localStorage.getItem("user"));
