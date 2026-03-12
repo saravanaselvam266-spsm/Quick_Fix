@@ -28,7 +28,7 @@ td {
 th {
   background-color: #f8f9fa;
 }
-input[type="number"] {
+input[type="number"] , select {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;

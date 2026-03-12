@@ -1,53 +1,54 @@
-
 document.querySelector(".login-btn").addEventListener("click", loginAdmin);
 
 function loginAdmin(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const loginInput = document.getElementById("loginInput").value;
-    const password = document.getElementById("passwordInput").value;
-    const submitBtn = document.querySelector(".login-btn");
+  const loginInput = document.getElementById("loginInput").value;
+  const password = document.getElementById("passwordInput").value;
+  const submitBtn = document.querySelector(".login-btn");
 
-    // basic validation
-    if (!loginInput || !password) {
-        alert("Please enter email/phone and password");
-        return;
-    }
+  // basic validation
+  if (!loginInput || !password) {
+    showToast(
+      "Input Required",
+      "Please enter email/phone and password",
+      "error",
+    );
+    return;
+  }
 
-    toggleLoading(submitBtn, true);
+  toggleLoading(submitBtn, true);
 
-    const loginData = {
-        username: loginInput,
-        password: password
-    };
+  const loginData = {
+    username: loginInput,
+    password: password,
+  };
 
-    fetch(`${API_BASE_URL}/users/login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(loginData)
+  fetch(`${API_BASE_URL}/users/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      toggleLoading(submitBtn, false);
+      if (data.error || data.detail) {
+        showToast("Login Error", data.error || data.detail, "error");
+      } else {
+        showToast("Success", "Login successful!", "success");
+        // Save user info
+        localStorage.setItem("user", JSON.stringify(data));
+
+        setTimeout(() => {
+          window.location.href = "./admin_dashboard.html";
+        }, 1000);
+      }
     })
-        .then(response => response.json())
-        .then(data => {
-            toggleLoading(submitBtn, false);
-            if (data.error || data.detail) {
-                alert(data.error || data.detail);
-            } else {
-                // Strict Role Check for Admin
-                if (data.role === "admin") {
-                    alert("Login successful");
-                    // Save user info
-                    localStorage.setItem("user", JSON.stringify(data));
-                    window.location.href = "./admin_dashboard.html";
-                } else {
-                    alert("Access Denied: You are not an admin. Your role is: " + data.role);
-                }
-            }
-        })
-        .catch(error => {
-            toggleLoading(submitBtn, false);
-            console.error("Error:", error);
-            alert("Login failed: " + error.message);
-        });
+    .catch((error) => {
+      toggleLoading(submitBtn, false);
+      console.error("Error:", error);
+      showToast("Network Error", "Login failed: " + error.message, "error");
+    });
 }

@@ -1,4 +1,3 @@
-
 // select the button
 document.querySelector(".submit-btn").addEventListener("click", vendorSignup);
 
@@ -23,13 +22,13 @@ function vendorSignup(event) {
   const checkedBoxes = document.querySelectorAll(".specialty:checked");
   let specialties = [];
 
-  checkedBoxes.forEach(box => {
+  checkedBoxes.forEach((box) => {
     specialties.push(box.value);
   });
 
   // basic validation
   if (!name || !email || !phone || !experience || !password) {
-    alert("Please fill all required fields");
+    showToast("Input Required", "Please fill all required fields", "info");
     return;
   }
 
@@ -44,31 +43,36 @@ function vendorSignup(event) {
     address: address,
     specialty: specialties.join(", "),
     experience_years: Number(experience),
-    availability: true
+    availability: true,
   };
 
   // send data to backend
   fetch(`${API_BASE_URL}/users/vendors`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(vendorData)
+    body: JSON.stringify(vendorData),
   })
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       toggleLoading(submitBtn, false);
       if (data.error) {
-        alert(data.error);
+        showToast("Signup Error", data.error, "error");
       } else {
-        alert("Vendor account created successfully!");
-        window.location.href = "./ven.login.html";
+        showToast(
+          "Success",
+          "Vendor account created successfully! Please login.",
+          "success",
+        );
+        setTimeout(() => {
+          window.location.href = "./ven.login.html";
+        }, 1500);
       }
     })
-    .catch(error => {
+    .catch((error) => {
       toggleLoading(submitBtn, false);
       console.error(error);
-      alert("Sign up failed: " + error.message);
+      showToast("Signup Failed", error.message, "error");
     });
 }
-

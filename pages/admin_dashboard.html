@@ -1,58 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuickFix - Admin Dashboard</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../styles/admin_dashboard_style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../styles/admin_dashboard_style.css" />
+    <link rel="stylesheet" href="../styles/toast.css" />
+    <script src="../js/toast.js"></script>
+  </head>
+  <body>
     <div class="container">
-        <a href="../index.html" class="back-link">← Back to Home</a>
-        <h1>Admin Dashboard - Service Pricing</h1>
+      <a href="../index.html" class="back-link">← Back to Home</a>
+      <h1>Admin Dashboard - Service Pricing</h1>
 
-        <!-- Add Service Form -->
-        <div class="add-service-form">
-            <h3 class="add-service-title">Add New Service</h3>
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Service Name</label>
-                    <input type="text" id="newServiceName" placeholder="e.g. Oil Change">
-                </div>
-                <div class="input-group">
-                    <label>Description</label>
-                    <input type="text" id="newServiceDesc" placeholder="Description">
-                </div>
-                <div class="input-group">
-                    <label>Vehicle Type</label>
-                    <input type="text" id="newVehicleType" placeholder="e.g. Car">
-                </div>
-                <div class="input-group">
-                    <label>Price (₹)</label>
-                    <input type="number" id="newServicePrice" placeholder="0.00">
-                </div>
-                <button onclick="createService()" class="add-btn">+ Add Service</button>
-            </div>
+      <!-- Add Service Form -->
+      <div class="add-service-form">
+        <h3 class="add-service-title">Add New Service</h3>
+        <div class="form-row">
+          <div class="input-group">
+            <label>Service Name</label>
+            <input
+              type="text"
+              id="newServiceName"
+              placeholder="e.g. Oil Change"
+            />
+          </div>
+          <div class="input-group">
+            <label>Description</label>
+            <input type="text" id="newServiceDesc" placeholder="Description" />
+          </div>
+          <div class="input-group">
+            <label>Vehicle Type</label>
+            <!-- <input type="dropdown" id="newVehicleType" placeholder="e.g. Car" /> -->
+             <select id="newVehicleType">
+                <option value="ALL" selected>All</option>
+                <option value="Car">Car</option>
+                <option value="Bike">Bike</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Price (₹)</label>
+            <input type="number" id="newServicePrice" placeholder="0.00" />
+          </div>
+          <button onclick="createService()" class="add-btn">
+            + Add Service
+          </button>
         </div>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Service Name</th>
-                    <th>Description</th>
-                    <th>Current Price (₹)</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="serviceList">
-                <!-- Services will be loaded here -->
-            </tbody>
-        </table>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Service Name</th>
+            <th>Description</th>
+            <th>Current Price (₹)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="serviceList">
+          <!-- Services will be loaded here -->
+        </tbody>
+      </table>
     </div>
 
     <script src="../js/constant.js"></script>
     <script src="../js/admin_manager.js"></script>
-</body>
+  </body>
 </html>

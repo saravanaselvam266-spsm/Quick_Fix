@@ -19,13 +19,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const isChildPage = window.location.pathname.includes("/pages/");
     const pathPrefix = isChildPage ? "./" : "./pages/";
 
-    if (user.role === "customer" || user.role === "admin") {
+    if (user.role === "customer") {
       dashboardLink.href = pathPrefix + "user.db1.html";
     } else if (user.role === "vendor" || user.role === "mechanic") {
       dashboardLink.href = pathPrefix + "ven.db1.html";
+    } else if (user.role === "admin") {
+      dashboardLink.href = pathPrefix + "admin_dashboard.html";
     }
 
     mainNav.appendChild(dashboardLink);
+
+    // 2.5 Add Profile link
+    if (user.role !== "admin") {
+      const profileLink = document.createElement("a");
+      profileLink.innerText = "Profile";
+      profileLink.href = pathPrefix + "profile.html";
+      mainNav.appendChild(profileLink);
+    }
 
     // 3. Add Logout Button (to authSection if it exists, otherwise to mainNav)
     const logoutBtn = document.createElement("button");

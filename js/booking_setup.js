@@ -1,53 +1,58 @@
 // ==========================================
-// CLIENT SIDE: BOOKING LOGIC
+// BOOKING WIZARD LOGIC
 // ==========================================
 
-// Global variable to stop polling if needed
+// Used to stop polling when mechanic accepts booking
 let bookingPollInterval = null;
 
-// Function 1: Book a Mechanic
-// Wizard State
+// Booking data stored while user moves through steps
 let bookingWizardState = {
   service_id: null,
-  service_price: 0,
-  payment_method: null,
+  price: 0,
+  payment: null,
   address: "",
   lat: null,
   lon: null,
 };
 
-// Initialize Wizard
+// Start wizard when page loads
 document.addEventListener("DOMContentLoaded", () => {
-  // Should check if on wizard page (e.g. presence of step indicators)
   if (document.getElementById("service-list-container")) {
-    loadServicesForWizard();
+    loadServices();
   }
 });
 
-function showStep(stepNumber) {
-  // Hide all steps
+// Show specific wizard step
+function showStep(step) {
   document
     .querySelectorAll(".wizard-step")
     .forEach((el) => (el.style.display = "none"));
-  // Show target
-  document.getElementById(`step-${stepNumber}`).style.display = "block";
 
-  // Update indicators
-  document.querySelectorAll(".step").forEach((el, index) => {
-    if (index + 1 === stepNumber) el.classList.add("active");
-    else el.classList.remove("active");
+  document.getElementById(`step-${step}`).style.display = "block";
+
+  document.querySelectorAll(".step").forEach((el, i) => {
+    el.classList.toggle("active", i + 1 === step);
   });
 }
 
-async function loadServicesForWizard() {
+// ==========================================
+// SERVICE SELECTION
+// ==========================================
+
+// Load services from API
+async function loadServices() {
   const list = document.getElementById("service-list-container");
+
   try {
-    const res = await fetch(`${API_BASE_URL}/services/`);
-    const services = await res.json();
+    const services = await fetch(`${API_BASE_URL}/services/`).then((r) =>
+      r.json(),
+    );
+
     list.innerHTML = "";
 
     services.forEach((s) => {
       const btn = document.createElement("button");
+
       btn.className = "service-select-btn";
       btn.style.padding = "15px";
       btn.style.textAlign = "left";
@@ -55,207 +60,211 @@ async function loadServicesForWizard() {
       btn.style.borderRadius = "8px";
       btn.style.backgroundColor = "white";
       btn.style.cursor = "pointer";
-      btn.innerHTML = `<strong>${s.service_name}</strong> - ₹${s.base_price}<br><small>${s.description}</small>`;
+
+      btn.innerHTML = `<strong>${s.service_name}</strong> - ₹${s.base_price}
+        <br><small>${s.description}</small>`;
+
       btn.onclick = () => selectService(s.service_id, s.base_price);
+
       list.appendChild(btn);
     });
-  } catch (e) {
-    list.innerHTML = "<p>Error loading services.</p>";
+  } catch {
+    list.innerHTML = "<p>Error loading services</p>";
   }
 }
 
+// Save selected service
 function selectService(id, price) {
   bookingWizardState.service_id = id;
-  bookingWizardState.service_price = price;
-  console.log("Selected Service:", id);
+  bookingWizardState.price = price;
   showStep(2);
 }
 
+// Save payment method
 function selectPayment(method) {
-  bookingWizardState.payment_method = method;
-  console.log("Selected Payment:", method);
+  bookingWizardState.payment = method;
   showStep(3);
 }
 
-// Helper to get location
+// ==========================================
+// LOCATION DETECTION
+// ==========================================
+
+// Detect user location and convert to address
 async function detectLocation() {
-  const btn = document.querySelector(".locate-btn"); // More reliable way to get the button
+  const btn = document.querySelector(".locate-btn");
+
   btn.innerText = "Locating...";
 
   if (!navigator.geolocation) {
-    alert("Geolocation is not supported by this browser.");
+    showToast("Error", "Geolocation not supported by your browser", "error");
     btn.innerText = "📍 Use My Current Location";
     return;
   }
 
   navigator.geolocation.getCurrentPosition(
-    async (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+    async (pos) => {
+      const { latitude, longitude } = pos.coords;
 
-      // Save coordinates to our state
-      bookingWizardState.lat = lat;
-      bookingWizardState.lon = lon;
+      bookingWizardState.lat = latitude;
+      bookingWizardState.lon = longitude;
 
       try {
-        // Now, let's convert these numbers (Lat/Lon) into a real address!
-        // We use a free service called Nominatim (OpenStreetMap)
         btn.innerText = "Fetching Address...";
 
-        const response = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`,
-        );
-        const data = await response.json();
+        const data = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`,
+        ).then((r) => r.json());
 
-        if (data && data.address) {
-          // Extract only the parts we need from the address object
-          const addr = data.address;
-          const town = addr.town || addr.suburb || addr.village || "";
-          const city = addr.city || addr.county || addr.municipality || "";
-          const state = addr.state || "";
-          const country = addr.country || "";
-          const pincode = addr.postcode || "";
+        const addr = data.address || {};
 
-          // Put them together in a clean format, skipping any empty ones
-          const cleanAddress = [town, city, state, country, pincode]
-            .filter((part) => part.trim() !== "")
-            .join(", ");
+        const cleanAddress = [
+          addr.town || addr.suburb || addr.village,
+          addr.city || addr.county,
+          addr.state,
+          addr.country,
+          addr.postcode,
+        ]
+          .filter(Boolean)
+          .join(", ");
 
-          // Update the input field with our nice short address
-          document.getElementById("address").value = cleanAddress;
-          btn.innerText = "✅ Location Found";
-        } else {
-          // Fallback if no specific address components found
-          document.getElementById("address").value = data.display_name || `Lat: ${lat}, Lon: ${lon}`;
-          btn.innerText = "✅ Location Found";
-        }
-      } catch (error) {
-        console.error("Error fetching address:", error);
-        document.getElementById("address").value = `Lat: ${lat}, Lon: ${lon}`;
+        document.getElementById("address").value =
+          cleanAddress || data.display_name;
+
+        btn.innerText = "✅ Location Found";
+      } catch {
+        document.getElementById("address").value =
+          `Lat: ${latitude}, Lon: ${longitude}`;
+
         btn.innerText = "✅ Coordinates Found";
       }
     },
     () => {
-      alert(
-        "Unable to retrieve your location. Please check your browser permissions.",
+      showToast(
+        "Permission Denied",
+        "Please allow location access in your settings",
+        "info",
       );
+
       btn.innerText = "📍 Use My Current Location";
     },
   );
 }
 
+// ==========================================
+// FINAL BOOKING SUBMIT
+// ==========================================
+
+// Send booking to backend
 async function finalSubmitBooking() {
-  const addressInput = document.getElementById("address").value;
-  const submitBtn = document.querySelector(".continue-btn");
+  const address = document.getElementById("address").value;
+  const btn = document.querySelector(".continue-btn");
 
-  // --- BEGINNER VALIDATION ---
-  if (!addressInput) {
-    alert("Please enter an address or detect location.");
+  if (!address) {
+    showToast(
+      "Input Required",
+      "Please enter an address or detect location",
+      "error",
+    );
     return;
   }
 
-  // Check if the address has at least town/city, state, and pincode (approx 3 parts)
-  const addressParts = addressInput.split(",");
-  if (addressParts.length < 3) {
-    alert("Address is too short! Please include City, State, and Pincode.");
-    return;
-  }
-  // --- END VALIDATION ---
-  bookingWizardState.address = addressInput;
+  bookingWizardState.address = address;
 
   const user = JSON.parse(localStorage.getItem("user"));
-  if (!user || !user.access_token) {
-    alert("You must be logged in to book a service.");
+
+  if (!user?.access_token) {
+    showToast("Login Required", "Please login to book a service", "info");
     window.location.href = "./login.html";
     return;
   }
-  const activeUser = user;
 
   const bookingData = {
-    customer_id: activeUser.user_id,
+    customer_id: user.user_id,
     service_id: bookingWizardState.service_id,
     address: bookingWizardState.address,
-    latitude: bookingWizardState.lat, // Fallback if typed manual
+    latitude: bookingWizardState.lat,
     longitude: bookingWizardState.lon,
-    price: bookingWizardState.service_price,
+    price: bookingWizardState.price,
     status: "pending",
     vendor_id: null,
     date_time: new Date().toISOString(),
-    // could add payment method to DB model if needed, but not in current schema
   };
 
-  toggleLoading(submitBtn, true);
+  toggleLoading(btn, true);
 
   try {
-    const response = await fetch(`${API_BASE_URL}/bookings/`, {
+    const res = await fetch(`${API_BASE_URL}/bookings/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${activeUser.access_token}`,
+        Authorization: `Bearer ${user.access_token}`,
       },
       body: JSON.stringify(bookingData),
     });
 
-    if (response.ok) {
-      const result = await response.json();
-      // Don't remove loading if we are navigating away, but alerts block execution so...
-      toggleLoading(submitBtn, false);
-      alert(
-        `Booking Confirmed! ID: ${result.booking_id}\nPayment: ${bookingWizardState.payment_method}`,
-      );
-      startBookingStatusPolling(result.booking_id);
-      // Maybe redirect to dashboard?
+    if (!res.ok) throw new Error();
+
+    const result = await res.json();
+
+    toggleLoading(btn, false);
+
+    showToast(
+      "Booking Confirmed!",
+      `Service ID: ${result.booking_id} has been created`,
+      "success",
+    );
+
+    startBookingStatusPolling(result.booking_id);
+
+    setTimeout(() => {
       window.location.href = "user.db1.html";
-    } else {
-      toggleLoading(submitBtn, false);
-      const err = await response.json();
-      alert("Error: " + JSON.stringify(err));
-    }
-  } catch (e) {
-    toggleLoading(submitBtn, false);
-    console.error(e);
-    alert("Booking failed");
+    }, 1500);
+  } catch {
+    toggleLoading(btn, false);
+
+    showToast(
+      "Booking Failed",
+      "Something went wrong. Please try again.",
+      "error",
+    );
   }
 }
 
-// Function to check if a mechanic accepted
-function startBookingStatusPolling(bookingId) {
-  if (bookingPollInterval) clearInterval(bookingPollInterval);
+// ==========================================
+// CHECK IF MECHANIC ACCEPTED
+// ==========================================
+
+// Poll backend every 3 seconds
+function startBookingStatusPolling(id) {
+  clearInterval(bookingPollInterval);
 
   bookingPollInterval = setInterval(async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/bookings/${bookingId}`, {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).access_token}`,
-        },
-      });
-      const booking = await res.json();
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      const booking = await fetch(`${API_BASE_URL}/bookings/${id}`, {
+        headers: { Authorization: `Bearer ${user.access_token}` },
+      }).then((r) => r.json());
 
       if (booking.status === "accepted") {
         clearInterval(bookingPollInterval);
-        alert(
-          `Good news! Your mechanic is on the way.\nVendor ID: ${booking.vendor_id}`,
+
+        showToast(
+          "Mechanic Found!",
+          "A mechanic has accepted your booking and is on the way!",
+          "success",
         );
 
-        // Update UI
         const btn = document.querySelector(".continue-btn");
+
         if (btn) {
           btn.innerText = "Mechanic Found!";
-          btn.style.backgroundColor = "#28a745"; // Green
+          btn.style.backgroundColor = "#28a745";
         }
-
-        // Optional: Redirect to confirmation page
-        // window.location.href = "confirm.html";
       }
-    } catch (e) {
-      console.error("Polling error", e);
+    } catch {
+      console.error("Polling error");
     }
-  }, 3000); // Check every 3 seconds
+  }, 3000);
 }
-
-// ==========================================
-// CLIENT SIDE: BOOKING LOGIC
-// ==========================================
-// (Kept for Customer Booking Wizard)
-
-// ... (Vendor logic moved to vendor_dashboard.js and vendor_history.js) ...

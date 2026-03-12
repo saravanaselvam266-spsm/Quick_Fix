@@ -1,18 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuickFix Dashboard</title>
     <link rel="stylesheet" href="../styles/user.db1.style.css" />
+    <link rel="stylesheet" href="../styles/toast.css" />
+    <script src="../js/toast.js"></script>
   </head>
   <body>
     <!-- Header -->
     <header class="navbar">
-      <a href="../index.html"><div class="logo">Quick<span>Fix</span></div></a>
+      <a href="../index.html"
+        ><div class="logo">Quick<span>Fix</span></div></a
+      >
       <nav>
         <a href="../index.html">Home</a>
         <a href="#" class="active-1">Dashboard</a>
+        <a href="./profile.html">Profile</a>
       </nav>
       <div class="user-buttons">
         <button class="customer">Customer</button>
@@ -58,8 +63,7 @@
         <h3 class="section-title">Upcoming & Active Bookings</h3>
 
         <!-- Booking Cards -->
-         <div id="bookingList"></div>
-        
+        <div id="bookingList"></div>
       </section>
     </main>
     <script src="../js/constant.js"></script>

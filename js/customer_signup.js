@@ -6,13 +6,16 @@ function createCustomer(event) {
   const email = document.getElementById("email").value;
   const phone = document.getElementById("phone").value;
   const password = document.getElementById("password").value;
-  const address = document.getElementById("address").value +
-    ", " + document.getElementById("city").value +
-    ", " + document.getElementById("state").value;
+  const address =
+    document.getElementById("address").value +
+    ", " +
+    document.getElementById("city").value +
+    ", " +
+    document.getElementById("state").value;
   const submitBtn = document.querySelector(".create-btn");
 
   if (!name || !email || !phone || !password) {
-    alert("Please fill all required fields");
+    showToast("Input Required", "Please fill all required fields", "info");
     return;
   }
 
@@ -24,7 +27,7 @@ function createCustomer(event) {
     phone: phone,
     password: password, // Send as 'password', backend handles hashing
     role: "customer",
-    address: address
+    address: address,
   };
 
   fetch(`${API_BASE_URL}/users/customers`, {
@@ -38,15 +41,21 @@ function createCustomer(event) {
     .then((data) => {
       toggleLoading(submitBtn, false);
       if (data.error || data.detail) {
-        alert("Error: " + (data.error || data.detail));
+        showToast("Signup Error", data.error || data.detail, "error");
       } else {
-        alert("Account created successfully! Please login.");
-        window.location.href = "login.html";
+        showToast(
+          "Success",
+          "Account created successfully! Redirecting to login...",
+          "success",
+        );
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 1500);
       }
     })
     .catch((error) => {
       toggleLoading(submitBtn, false);
       console.error("Error:", error);
-      alert("Sign up failed: " + error.message);
+      showToast("Signup Failed", error.message, "error");
     });
 }

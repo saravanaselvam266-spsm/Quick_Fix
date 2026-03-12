@@ -1,0 +1,218 @@
+/* Body and Basic Styling */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f7f8fc; /* Light gray background */
+  color: #333;
+}
+
+/* Header Styling - Similar to Dashboard */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px 50px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.logo span {
+  color: orange;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+nav a.active-link {
+  color: #007bff;
+}
+
+.logout-btn {
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Profile Container */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 150px);
+  padding: 20px;
+}
+
+/* Profile Card Styling */
+.profile-card {
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Profile Header Styling */
+.profile-header {
+  margin-bottom: 30px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #f0f0f0;
+  margin-bottom: 15px;
+}
+
+.profile-header h2 {
+  margin: 5px 0;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.role-badge {
+  background: #e7f3ff;
+  color: #007bff;
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+/* Details Section */
+.profile-details {
+  text-align: left;
+  margin-bottom: 35px;
+}
+
+.detail-group {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 15px 0;
+}
+
+.detail-group:last-child {
+  border-bottom: none;
+}
+
+.detail-group label {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.detail-group p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Edit and Save Button Styles */
+.edit-btn,
+.save-btn,
+.cancel-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+  margin-top: 10px;
+}
+
+.edit-btn {
+  background: white;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.edit-btn:hover {
+  background: #f0f7ff;
+}
+
+.save-btn {
+  background: #28a745;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #218838;
+}
+
+.cancel-btn {
+  background: #f4f4f4;
+  color: #666;
+}
+
+.profile-edit-form input {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 2px solid #007bff;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  background: transparent;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.profile-actions {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #888;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styling */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  nav {
+    display: none; /* Hide nav links on small mobile screens */
+  }
+
+  .profile-card {
+    padding: 30px 20px;
+  }
+}

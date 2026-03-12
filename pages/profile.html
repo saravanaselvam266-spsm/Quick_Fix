@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - QuickFix</title>
+    <!-- We link our CSS file here -->
+    <link rel="stylesheet" href="../styles/profile.style.css" />
+    <link rel="stylesheet" href="../styles/toast.css" />
+    <!-- Link to Google Fonts for nice typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header: Consistent with the rest of the app -->
+    <header class="navbar">
+      <a href="../index.html"
+        ><div class="logo">Quick<span>Fix</span></div></a
+      >
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="#" id="dashboardLink">Dashboard</a>
+        <a href="#" class="active-link">Profile</a>
+      </nav>
+      <div class="user-buttons">
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="profile-container">
+      <section class="profile-card">
+        <div class="profile-header">
+          <img
+            src="https://via.placeholder.com/100"
+            alt="Profile Picture"
+            class="profile-img"
+            id="profilePic"
+          />
+          <h2 id="displayUserName">User Name</h2>
+          <p class="role-badge" id="displayRole">Customer</p>
+        </div>
+
+        <div class="profile-details" id="profileView">
+          <div class="detail-group">
+            <label>Full Name</label>
+            <p id="fullName">Not available</p>
+          </div>
+
+          <div class="detail-group">
+            <label>Email Address</label>
+            <p id="userEmail">Not available</p>
+          </div>
+
+          <div class="detail-group">
+            <label>Phone Number</label>
+            <p id="userPhone">Not available</p>
+          </div>
+
+          <!-- Extra details for Mechanics/Vendors -->
+          <div id="mechanicDetails" style="display: none">
+            <div class="detail-group">
+              <label>Service Type / Specialty</label>
+              <p id="userSpecialty">Not available</p>
+            </div>
+            <div class="detail-group">
+              <label>Years of Experience</label>
+              <p id="userExperience">0 years</p>
+            </div>
+          </div>
+
+          <div class="detail-group">
+            <label>Location / Address</label>
+            <p id="userAddress">Not available</p>
+          </div>
+
+          <button class="edit-btn" onclick="toggleEdit(true)">
+            Edit Profile
+          </button>
+        </div>
+
+        <!-- Edit Form -->
+        <div class="profile-edit-form" id="profileEdit" style="display: none">
+          <form id="editForm">
+            <div class="detail-group">
+              <label>Full Name</label>
+              <input type="text" id="editName" required />
+            </div>
+
+            <div class="detail-group">
+              <label>Email Address</label>
+              <input type="email" id="editEmail" required />
+            </div>
+
+            <div class="detail-group">
+              <label>Phone Number</label>
+              <input type="text" id="editPhone" required />
+            </div>
+
+            <!-- Extra edit fields for Mechanics -->
+            <div id="mechanicEditDetails" style="display: none">
+              <!-- <div class="detail-group">
+                <label>Specialty</label>
+                <input type="text" id="editSpecialty" />
+              </div> -->
+              <div class="detail-group">
+                <label>Experience (Years)</label>
+                <input type="number" id="editExperience" step="0.1" />
+              </div>
+            </div>
+
+            <div class="detail-group">
+              <label>Address</label>
+              <input type="text" id="editAddress" />
+            </div>
+
+            <div class="edit-actions">
+              <button
+                type="button"
+                class="cancel-btn"
+                onclick="toggleEdit(false)"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="save-btn">Save Changes</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="profile-actions">
+          <a href="#" id="dashboardLink" class="back-link">Back to Dashboard</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- JavaScript to load user data -->
+    <script src="../js/constant.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/toast.js"></script>
+  </body>
+</html>
