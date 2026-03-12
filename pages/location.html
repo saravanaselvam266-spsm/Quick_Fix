@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,6 @@
     <title>QuickFix - Enter Location</title>
     <link rel="stylesheet" href="../styles/location.style.css" />
     <link rel="stylesheet" href="../styles/toast.css" />
-    <script src="../js/toast.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -44,14 +43,21 @@
       <div class="form-box">
         <!-- STEP 1: SERVICE SELECTION -->
         <div id="step-1" class="wizard-step">
-            <h2>Select a Service</h2>
-            <p>What issue are you facing?</p>
-            <div id="service-list-container" style="display: flex; gap: 10px; flex-direction: column; margin-bottom: 20px;">
-                <p>Loading services...</p>
-            </div>
+          <h2>Select a Service</h2>
+          <p>What issue are you facing?</p>
+          <div
+            id="service-list-container"
+            style="
+              display: flex;
+              gap: 10px;
+              flex-direction: column;
+              margin-bottom: 20px;
+            "
+          >
+            <p>Loading services...</p>
+          </div>
         </div>
-            </div>
-        </div>
+      </div>
 
       <!-- STEP 2: PAYMENT METHOD -->
       <div id="step-2" class="wizard-step">
@@ -108,5 +114,6 @@
     <script src="../js/constant.js"></script>
     <script src="../js/booking_setup.js"></script>
     <script src="../js/auth_check.js"></script>
+    <script src="../js/toast.js"></script>
   </body>
 </html>
