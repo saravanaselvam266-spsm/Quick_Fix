@@ -160,10 +160,10 @@ async function finalSubmitBooking() {
   const address = document.getElementById("address").value;
   const btn = document.querySelector(".continue-btn");
 
-  if (!address) {
+  if (!address || address.length < 5) {
     showToast(
       "Input Required",
-      "Please enter an address or detect location",
+      "Please enter a complete address or detect location",
       "error",
     );
     return;

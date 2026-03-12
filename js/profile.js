@@ -106,19 +106,44 @@ document
     event.preventDefault();
 
     // Collect data from the form
+    const name = document.getElementById("editName").value;
+    const email = document.getElementById("editEmail").value;
+    const phone = document.getElementById("editPhone").value;
+    const address = document.getElementById("editAddress").value;
+    const specialty = document.getElementById("editSpecialty")?.value || "N/A";
+    const experience = parseFloat(document.getElementById("editExperience")?.value) || 0;
+
+    // Simple validation for beginners
+    if (!name || !email || !phone) {
+      showToast("Input Required", "Name, Email and Phone are required", "info");
+      return;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+      showToast("Invalid Email", "Please enter a valid email address", "error");
+      return;
+    }
+
+    if (phone.length !== 10 || isNaN(phone)) {
+      showToast("Invalid Phone", "Please enter a valid 10-digit phone number", "error");
+      return;
+    }
+
+    if (user.role === "mechanic" || user.role === "vendor") {
+      if (experience < 0 || isNaN(experience)) {
+        showToast("Invalid Experience", "Please enter valid years of experience", "error");
+        return;
+      }
+    }
+
     const updatedData = {
-      name: document.getElementById("editName").value,
-      email: document.getElementById("editEmail").value,
-      phone: document.getElementById("editPhone").value,
-      address: document.getElementById("editAddress").value,
-
-      // Mechanic specific info (will be N/A for customers)
+      name: name,
+      email: email,
+      phone: phone,
+      address: address,
       role: user.role,
-      specialty: document.getElementById("editSpecialty")?.value || "N/A",
-      experience_years:
-        parseFloat(document.getElementById("editExperience")?.value) || 0,
-
-      // These are just required by your backend schema currently
+      specialty: specialty,
+      experience_years: experience,
       rating: window.currentUserData?.rating || 0,
       availability: true,
     };

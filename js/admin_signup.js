@@ -14,6 +14,22 @@ function createAdmin(event) {
     return;
   }
 
+  // Simple validation for beginners
+  if (!email.includes("@") || !email.includes(".")) {
+    showToast("Invalid Email", "Please enter a valid email address", "error");
+    return;
+  }
+
+  if (phone.length !== 10 || isNaN(phone)) {
+    showToast("Invalid Phone", "Please enter a valid 10-digit phone number", "error");
+    return;
+  }
+
+  if (password.length < 6) {
+    showToast("Weak Password", "Password must be at least 6 characters", "error");
+    return;
+  }
+
   toggleLoading(submitBtn, true);
 
   const userData = {
