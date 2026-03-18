@@ -1,7 +1,3 @@
-// ==========================================
-// VENDOR DASHBOARD LOGIC
-// ==========================================
-
 // Get logged-in user
 const user = JSON.parse(localStorage.getItem("user"));
 const vendorId = user ? user.user_id : null;
@@ -20,23 +16,40 @@ if (document.getElementById("vendorName")) {
   document.getElementById("vendorName").innerText = user.name;
 }
 
-// ------------------------------------------
-// Function to load dashboard stats & active jobs
-// ------------------------------------------
-// ------------------------------------------
-// Function to load dashboard stats & active jobs
-// ------------------------------------------
-// ------------------------------------------
-// Function to load dashboard stats & active jobs
-// ------------------------------------------
 async function loadMechanicDashboard() {
   const jobList = document.getElementById("jobList");
 
-  // Hardcoded location for now (Simulating vendor's current location)
-  const myLat = 13.0827;
-  const myLon = 80.2707;
-  const radius = 50;
+  const radius = 15;
 
+  // Helper function to get real location as a promise
+  const getCoordinates = () => {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) =>
+            resolve({
+              lat: position.coords.latitude,
+              lon: position.coords.longitude,
+            }),
+          (err) => reject(err),
+        );
+      } else {
+        reject(new Error("Geolocation not supported."));
+      }
+    });
+  };
+
+  let myLat = 13.0827; // Fallback location
+  let myLon = 80.2707;
+
+  try {
+    const coords = await getCoordinates();
+    myLat = coords.lat;
+    myLon = coords.lon;
+  } catch (err) {
+    console.error("Could not get real location (using fallback):", err);
+  }
+``
   try {
     if (!user.access_token) {
       console.warn("No token found");

@@ -23,9 +23,5 @@ function showToast(title, message, type = "info") {
   // 5. Automatically remove after 3.5 seconds
   setTimeout(() => {
     toast.classList.add("fade-out");
-    // Wait for animation to finish before removing
-    setTimeout(() => {
-      toast.remove();
-    }, 500);
   }, 3500);
 }
