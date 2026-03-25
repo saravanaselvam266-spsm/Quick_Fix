@@ -2,7 +2,6 @@ const API_BASE_URL = "https://quick-fix-backend.vercel.app";
 
 // const API_BASE_URL = "http://127.0.0.1:8000";
 
-
 // Helper function to show loading state on buttons
 function toggleLoading(button, isLoading, originalText = "Submit") {
   if (isLoading) {
@@ -14,5 +13,3 @@ function toggleLoading(button, isLoading, originalText = "Submit") {
     button.innerHTML = button.dataset.originalText || originalText;
   }
 }
-
-

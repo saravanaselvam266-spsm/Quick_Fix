@@ -111,7 +111,8 @@ document
     const phone = document.getElementById("editPhone").value;
     const address = document.getElementById("editAddress").value;
     const specialty = document.getElementById("editSpecialty")?.value || "N/A";
-    const experience = parseFloat(document.getElementById("editExperience")?.value) || 0;
+    const experience =
+      parseFloat(document.getElementById("editExperience")?.value) || 0;
 
     // Simple validation for beginners
     if (!name || !email || !phone) {
@@ -125,13 +126,21 @@ document
     }
 
     if (phone.length !== 10 || isNaN(phone)) {
-      showToast("Invalid Phone", "Please enter a valid 10-digit phone number", "error");
+      showToast(
+        "Invalid Phone",
+        "Please enter a valid 10-digit phone number",
+        "error",
+      );
       return;
     }
 
     if (user.role === "mechanic" || user.role === "vendor") {
       if (experience < 0 || isNaN(experience)) {
-        showToast("Invalid Experience", "Please enter valid years of experience", "error");
+        showToast(
+          "Invalid Experience",
+          "Please enter valid years of experience",
+          "error",
+        );
         return;
       }
     }

@@ -26,12 +26,20 @@ function createCustomer(event) {
   }
 
   if (phone.length !== 10 || isNaN(phone)) {
-    showToast("Invalid Phone", "Please enter a valid 10-digit phone number", "error");
+    showToast(
+      "Invalid Phone",
+      "Please enter a valid 10-digit phone number",
+      "error",
+    );
     return;
   }
 
   if (password.length < 6) {
-    showToast("Weak Password", "Password must be at least 6 characters", "error");
+    showToast(
+      "Weak Password",
+      "Password must be at least 6 characters",
+      "error",
+    );
     return;
   }
 

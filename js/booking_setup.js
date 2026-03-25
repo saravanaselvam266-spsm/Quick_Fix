@@ -1,6 +1,4 @@
-// ==========================================
 // BOOKING WIZARD LOGIC
-// ==========================================
 
 // Used to stop polling when mechanic accepts booking
 let bookingPollInterval = null;
@@ -35,9 +33,7 @@ function showStep(step) {
   });
 }
 
-// ==========================================
 // SERVICE SELECTION
-// ==========================================
 
 // Load services from API
 async function loadServices() {
@@ -86,9 +82,7 @@ function selectPayment(method) {
   showStep(3);
 }
 
-// ==========================================
 // LOCATION DETECTION
-// ==========================================
 
 // Detect user location and convert to address
 async function detectLocation() {
@@ -151,9 +145,7 @@ async function detectLocation() {
   );
 }
 
-// ==========================================
 // FINAL BOOKING SUBMIT
-// ==========================================
 
 // Send booking to backend
 async function finalSubmitBooking() {
@@ -231,9 +223,7 @@ async function finalSubmitBooking() {
   }
 }
 
-// ==========================================
 // CHECK IF MECHANIC ACCEPTED
-// ==========================================
 
 // Poll backend every 3 seconds
 function startBookingStatusPolling(id) {

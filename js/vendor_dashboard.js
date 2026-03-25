@@ -49,7 +49,7 @@ async function loadMechanicDashboard() {
   } catch (err) {
     console.error("Could not get real location (using fallback):", err);
   }
-``
+  ``;
   try {
     if (!user.access_token) {
       console.warn("No token found");
@@ -93,7 +93,7 @@ async function loadMechanicDashboard() {
     let completedTodayCount = 0;
     let myActiveJobs = [];
 
-    const todayDate = new Date().toISOString().split("T")[0];
+    // const todayDate = new Date().toISOString().split("T")[0];
 
     allBookings.forEach((b) => {
       const bookingDate = new Date(b.date_time).toISOString().split("T")[0];

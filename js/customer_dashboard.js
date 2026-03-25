@@ -9,12 +9,10 @@ const user = JSON.parse(localStorage.getItem("user"));
 if (!user) {
   showToast("Login Required", "Please login to access your dashboard", "info");
   window.location.href = "./user.login.html";
-  
 }
 
 // Show username on dashboard
 document.getElementById("userName").innerText = user.name;
-
 
 async function loadCustomerDashboard() {
   try {
